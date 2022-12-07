@@ -12,9 +12,8 @@ function App() {
   return (
     <div>
         <Nav />
-        <Home />
-        <About />
-        <Testimonials />
+        {/* <About />
+        <Testimonials /> */}
 
         <Routes>
           <Route path='/' element={<Home />}></Route>

@@ -1,0 +1,21 @@
+h1{
+    margin-top: 6rem;
+    margin-left: 5rem;
+    font-size: 3.6rem;
+}
+:root{
+    --mainColorLight: #ffe9e0;
+    --secondaryColor: #b3400f;
+    --buttonColor: #ff4d00;
+}
+span{
+    color: var(--buttonColor);
+}
+
+@media screen and (max-width:550px) {
+    h1{
+        margin-top: 4rem;
+        margin-left: 2rem;
+        font-size: 2rem;
+    }
+}
