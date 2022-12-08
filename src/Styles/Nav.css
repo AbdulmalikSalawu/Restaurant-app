@@ -77,7 +77,11 @@ header .nav-btn {
     visibility: hidden;
     opacity: 0;
 }
-
+/* @media screen and (min-width:890) and (max-width: 1035) {
+    nav a{
+      color: white !important;
+    }
+} */
 @media screen and (min-width: 881px) and (max-width: 1080px) {
     nav a{
         margin: 0 1rem;
