@@ -10,12 +10,38 @@
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.5px);
+    backdrop-filter: blur(18.5px);
     -webkit-backdrop-filter: blur(5.5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 35rem;
+}
+.flexo{
+    display: flex;
+    align-items: center;
 }
 input{
-    background: none;
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   /* border-bottom: thin solid var(--buttonColor); */
+   border-bottom: 1.5px solid white;
+   width: 70%;
+   background: none;
+   height: 2.6rem;
+   padding-left: 2rem;
+   margin-top: 2.5rem !important;
+}
+::placeholder{
+    color: white;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-size: 1.1rem;
+}
+span{
+    color: #4b1b06;
+}
+.signupbtn{
+    width: 55%;
+    background-color: #cf4205;
 }
 @media screen and (max-width:600px) {
     .signupbody{
