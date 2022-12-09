@@ -1,3 +1,6 @@
+*{
+    overflow-x: hidden;
+}
 h1{
     margin-top: 5.7rem;
     margin-left: var(--marginleft);
@@ -17,7 +20,7 @@ span{
     border-radius: 50%;
 }
 p{
-    margin-left: var(--marginleft);
+    margin-left: var(--marginleft) !important;
     font-size: 1.3rem;
     line-height: 2.5rem;
 }
@@ -33,6 +36,14 @@ p{
     background-color: #8a2d06;
     color: white;
 }
+.impressions{
+    display: flex;
+    justify-content: center;
+}
+.partners{
+    font-size: 1rem;
+    margin-top: -1.3rem;
+}
 /* .mainfood{
     margin-top: -6rem;
     width: 30rem;
@@ -47,17 +58,17 @@ p{
 @media screen and (max-width:550px) {
     h1{
         margin-top: 3rem;
-        margin-left: 2rem;
+        margin-left: 1.5rem;
         font-size: 1.8rem;
         line-height: 2.6rem;
     }
     p{
         line-height: 1.8rem;
-        margin-left: 2rem;
+        margin-left: 1.5rem !important;
         font-size: 1.2rem;
     }
     .orderButton{
-        margin-left: 2rem;
+        margin-left: 1.5rem;
         margin-top: 1rem;
     }
     .mainfood{
@@ -66,5 +77,13 @@ p{
         display: block;
         margin: auto;
         margin-top: 3rem;
+    }
+    .impressions{
+        display: block;
+       
+    }
+    .partners{
+        font-size: 1.2rem;
+        margin-top: 1rem;
     }
 }
