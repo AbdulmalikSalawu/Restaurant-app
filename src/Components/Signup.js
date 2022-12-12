@@ -1,7 +1,6 @@
 import React from 'react'
 import {useFormik} from 'formik';
 import {basicSchema} from '../Schemas/schema';
-// import {useFormik} from "formik"
 // import {createUserWithEmailAndPassword} from 'firebase/auth';
 // import {auth} from './firebase-config'
 // import {ref, set, onValue} from 'firebase/database'
@@ -9,14 +8,17 @@ import {basicSchema} from '../Schemas/schema';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/Signup.css'
 
-const onSubmit = async (values, actions) => {
-    console.log(values);
-    console.log("Submitted");
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    actions.resetForm();
-}
-
 function Signup() {
+  
+    const navigate=useNavigate()
+
+    const onSubmit = async (values, actions) => {
+      console.log(values);
+      console.log("Submitted");
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      actions.resetForm();
+      navigate('/login')
+  }
 
   const {values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit} = useFormik({
     initialValues: {
@@ -57,7 +59,6 @@ function Signup() {
   //       }
   //     };
 
-    const navigate=useNavigate()
     const login = () => {
       navigate('/login')
   }
