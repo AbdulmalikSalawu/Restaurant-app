@@ -29,7 +29,7 @@ function Login() {
 
     // const login = async () => {
     //   try {
-    //     const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    //     const user = await signInWithEmailAndPassword(auth, email, password)
     //     navigate('/dashboard')
     //     console.log(user);
     //   } catch (error) {

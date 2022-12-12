@@ -73,11 +73,11 @@ p{
         margin-top: 1rem;
     }
     .mainfood{
-        height: 24rem;
-        width: 21rem;
+        height: 23rem;
+        width: 20rem;
         display: block;
         margin: auto;
-        margin-top: 0.3rem;
+        margin-top: -4rem;
     }
     .impressions{
         display: block;

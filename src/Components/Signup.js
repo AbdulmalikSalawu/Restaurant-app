@@ -1,10 +1,9 @@
 import React from 'react'
 import {useFormik} from 'formik';
 import {basicSchema} from '../Schemas/schema';
-// import {createUserWithEmailAndPassword} from 'firebase/auth';
-// import {auth} from './firebase-config'
-// import {ref, set, onValue} from 'firebase/database'
-// import { db } from './firebase-config'
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {ref, set, onValue} from 'firebase/database'
+import {auth, db} from '../Schemas/firebase-config'
 import { useNavigate } from 'react-router-dom';
 import '../Styles/Signup.css'
 
@@ -12,11 +11,36 @@ function Signup() {
   
     const navigate=useNavigate()
 
+    let userId = 0;
+    let userRef = ref(db,"users");
+    onValue(userRef, (snapshot) => {
+      let userArray = [snapshot.val()];
+        if(userArray){
+          userId = userArray.length
+        }
+        else {
+          userId = 0;
+        }
+        })
+
     const onSubmit = async (values, actions) => {
       console.log(values);
-      console.log("Submitted");
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      actions.resetForm();
+      new Promise((resolve) => setTimeout(resolve, 1000));
+
+      try {
+        await createUserWithEmailAndPassword(auth, values.email, values.password, values.phoneNumber, values.username)
+        .then((credentials)=> {
+            let user_id = credentials.user.uid
+            let userObj = {email:values.email, phoneNumber:values.phoneNumber, username:values.username};
+            let dbRef = ref (db, `users/${userId}`)
+            set (dbRef, userObj);
+            console.log(user_id);
+        })
+        actions.resetForm();
+        navigate('/login')
+      } catch (error) {
+        alert (error.message);
+      }
       navigate('/login')
   }
 
