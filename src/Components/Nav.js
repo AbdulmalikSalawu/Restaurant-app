@@ -17,6 +17,9 @@ function Nav() {
     const register = () => {
         navigate('/signup')
     }
+    const login = () => {
+        navigate('/login')
+    }
 
   return (
     <div>
@@ -29,7 +32,7 @@ function Nav() {
                 <NavLink onClick={showNavbar} to ='/whychoose'>Why Choose Us</NavLink>
                 <NavLink onClick={showNavbar} to='/about'>About Us</NavLink>
                 <NavLink className='me-lg-3' onClick={showNavbar} to='/testimonials'>Testimonials</NavLink>
-                <button className='ms-lg-5 text-white loginbtn'><NavLink onClick={showNavbar} to='/login'>Login</NavLink></button>
+                <button onClick={login} className='ms-lg-5 text-white loginbtn'><NavLink onClick={showNavbar} to='/login'>Login</NavLink></button>
                 <button onClick={register} className='ms-lg-4 signupbtn'><NavLink onClick={showNavbar} to='/signup'>Register</NavLink></button>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                     <FaTimes/>

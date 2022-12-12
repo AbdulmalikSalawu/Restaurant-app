@@ -3,12 +3,10 @@ import '../Styles/Whychoose.css'
 import card1 from '../Assets/cardimg6.png';
 import card2 from '../Assets/cardimg4.png';
 import card3 from '../Assets/cardimg2.png'
-import Nav from './Nav';
 
 function WhyChoose() {
   return (
     <div>
-        <Nav />
         <div className='text-center mt-5'>
             <h2 className='fs-1'>Why Choose Us</h2>
             <div className='fs-5'>These are what makes our delicacies different</div>

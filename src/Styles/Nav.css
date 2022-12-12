@@ -60,7 +60,7 @@ h4{
 .signupbtn a{
     color: white;
 }
-.signupbtn:hover{
+.signupbtn:hover, .signupbtn2:hover{
    background-color: #8a2d06;
 }
 .signupbtn a:hover{
@@ -84,19 +84,13 @@ header .nav-btn {
 } */
 @media screen and (min-width: 881px) and (max-width: 1080px) {
     nav a{
-        margin: 0 1rem;
+        margin: 0 0.5rem;
     }
     header{
         padding-top: 0rem;
     }
     h4{
         margin-top: -2rem;
-    }
-   .loginbtn{
-        margin-left: 0rem;
-    }
-    .signupbtn{
-        margin-left: 1rem;
     }
 }
 

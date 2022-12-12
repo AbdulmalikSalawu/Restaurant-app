@@ -6,26 +6,16 @@
     height: 100vh;
 }
 .inputcont{
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(18.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    height: 35rem;
-}
-.flexo{
-    display: flex;
-    align-items: center;
+    min-height: 36rem;
 }
 input{
    border-top: none;
    border-left: none;
    border-right: none;
-   /* border-bottom: thin solid var(--buttonColor); */
    border-bottom: 1.5px solid white;
-   width: 70%;
+   width: 79%;
+   color: black;
+   font-size: 1.4rem;
    background: none;
    height: 2.6rem;
    padding-left: 2rem;
@@ -36,18 +26,72 @@ input{
     /* font-family: 'Times New Roman', Times, serif; */
     font-size: 1.1rem;
 }
-span{
-    color: #4b1b06;
-}
-.signupbtn{
-    width: 55%;
+.signupbtn2{
+    width: 62%;
     background-color: #cf4205;
+    color: white !important;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 2px 12px 2px;
+    font-size: 1rem;
 }
-@media screen and (max-width:600px) {
-    .signupbody{
+.inputcont2{
+    height: 25rem;
+}
+input.input-error,
+select.input-error{
+    border-color: red;
+}
+button:disabled{
+    opacity: 0.35;
+}
+.error{
+    font-size: 0.9rem;
+    text-align: start;
+    margin-left: 3rem !important;
+    color: red;
+}
+@media screen and (min-width: 801px) {
+    .inputcont{
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20.5px);
+        -webkit-backdrop-filter: blur(5.5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 26rem;
+        margin-left: 18rem !important;
+    }
+}
+@media screen and (max-width:800px) {
+    /* .signupbody{
         background-image: url('../Assets/happylady.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    } */
+    span{
+        color: var(--buttonColor);
+    }
+    ::placeholder{
+        color: black;
+        font-weight: bolder;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    input{
+        border-bottom: thin solid black;
+        color: black;
+    }
+    .inputcont, .inputcont2{
+        width: 95% !important;
+       margin-left: 0.5rem !important;
+       background-color: white;
+       margin-top: 5.2rem !important;
+       border-radius: 16px;
+    }
+    @media screen and (max-width: 390px) {
+        .inputcont{
+            margin-top: 2rem !important;
+        }
     }
 }

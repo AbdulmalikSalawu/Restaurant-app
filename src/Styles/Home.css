@@ -10,15 +10,15 @@ h1{
 :root{
     --marginleft: 5rem;
 }
-span{
+.ord{
     color: var(--buttonColor);
 }
-.mainfood{
+/* .mainfood{
     margin-top: 4.5rem;
     height: 25rem;
     width: 25rem;
     border-radius: 50%;
-}
+} */
 p{
     margin-left: var(--marginleft) !important;
     font-size: 1.3rem;
@@ -44,12 +44,13 @@ p{
     font-size: 1rem;
     margin-top: -1.3rem;
 }
-/* .mainfood{
-    margin-top: -6rem;
-    width: 30rem;
-    height: 32rem;
+.mainfood{
+    margin-top: -6.9rem;
+    width: 27rem;
+    height: 30rem;
     border-radius: 50%;
-} */
+    
+}
 @media screen and (max-width:1000px) {
     .mainfood{
         margin-left: var(--marginleft);
@@ -72,11 +73,11 @@ p{
         margin-top: 1rem;
     }
     .mainfood{
-        height: 18rem;
-        width: 18rem;
+        height: 24rem;
+        width: 21rem;
         display: block;
         margin: auto;
-        margin-top: 3rem;
+        margin-top: 0.3rem;
     }
     .impressions{
         display: block;
