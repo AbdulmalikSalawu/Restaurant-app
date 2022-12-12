@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useFormik} from 'formik';
 import {basicSchema} from '../Schemas/schema';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
@@ -10,11 +10,13 @@ import '../Styles/Signup.css'
 function Signup() {
   
     const navigate=useNavigate()
+    const [firebaseError, setFirebaseError] = useState("")
 
     let userId = 0;
-    let userRef = ref(db,"users");
-    onValue(userRef, (snapshot) => {
-      let userArray = [snapshot.val()];
+    let userDb = ref(db,"users");
+    let userArray = [];
+    onValue(userDb, (snapshot) => {
+      userArray = snapshot.val();
         if(userArray){
           userId = userArray.length
         }
@@ -26,7 +28,6 @@ function Signup() {
     const onSubmit = async (values, actions) => {
       console.log(values);
       new Promise((resolve) => setTimeout(resolve, 1000));
-
       try {
         await createUserWithEmailAndPassword(auth, values.email, values.password, values.phoneNumber, values.username)
         .then((credentials)=> {
@@ -35,13 +36,12 @@ function Signup() {
             let dbRef = ref (db, `users/${userId}`)
             set (dbRef, userObj);
             console.log(user_id);
-        })
-        actions.resetForm();
-        navigate('/login')
+          })
+          navigate('/login')
+          actions.resetForm();
       } catch (error) {
-        alert (error.message);
+        setFirebaseError(error.message)
       }
-      navigate('/login')
   }
 
   const {values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit} = useFormik({
@@ -54,34 +54,6 @@ function Signup() {
     validationSchema: basicSchema,
     onSubmit,
 })
-
-  // let userId = 0;
-  //     let userRef = ref(db,"users");
-  //     onValue(userRef, (snapshot) => {
-  //       let userArray = [snapshot.val()];
-  //       if(userArray){
-  //         userId = userArray.length
-  //       }
-  //       else {
-  //         userId = 0;
-  //       }
-  //       })
-
-  //   const register = async () => {
-  //       try {
-  //         await createUserWithEmailAndPassword(auth, userEmail, userPassword, userName)
-  //         .then((credentials)=> {
-  //             let user_id = credentials.user.uid
-  //             let userObj = {userEmail, userName, user_id};
-  //             let dbRef = ref (db, `users/${userId}`)
-  //             set (dbRef, userObj);
-  //             console.log(user_id);
-  //         })
-  //         navigate('/login')
-  //       } catch (error) {
-  //         alert (error.message);
-  //       }
-  //     };
 
     const login = () => {
       navigate('/login')
@@ -96,7 +68,7 @@ function Signup() {
         {errors.username && touched.username && <p className='error'>{errors.username}</p>}
 
         <input type='text' value={values.email} placeholder='Email' onChange={handleChange} onBlur={handleBlur} name='email' className={errors.email && touched.email ? "input-error" : ""} /><br />
-        {errors.email && touched.email && <p className='error'>{errors.email}</p>}
+        {errors.email && touched.email && <p className='error'>{errors.email}</p>}{firebaseError ? <p className='error'>{firebaseError}</p> : ""}
 
         <input type='text' value={values.phoneNumber} placeholder='phone number' onChange={handleChange} onBlur={handleBlur} name='phoneNumber' className={errors.phoneNumber && touched.phoneNumber ? "input-error" : ""} /><br />
         {errors.phoneNumber && touched.phoneNumber && <p className='error'>{errors.phoneNumber}</p>}
