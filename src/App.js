@@ -9,6 +9,7 @@ import Login from './Components/Login';
 import NoMatch from './Components/NoMatch';
 import WhyChoose from './Components/WhyChoose';
 import Dashboard from './Components/Dashboard';
+import AddFile from './Components/AddFile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
           <Route path='login' element={<Login />} />
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='addfile' element={<AddFile />} />
           <Route path='*' element={<NoMatch />} />
       </Routes>
     </div>

@@ -26,7 +26,6 @@ function Nav() {
         <header>
             <h4 className='ms-lg-5'><img className='mt-5' src={logo} alt="svg image" /></h4>
             <nav ref={navRef} className='pb-2'>
-                {/* <p><img src={house} alt="house" /> */}
                 <NavLink className='ms-lg-5 ps-lg-5' onClick={showNavbar} to ='/'>Home</NavLink>
                 {/* </p> */}
                 <NavLink onClick={showNavbar} to ='/whychoose'>Why Choose Us</NavLink>

@@ -77,6 +77,43 @@ header .nav-btn {
     visibility: hidden;
     opacity: 0;
 }
+.userEmail{
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 1rem;
+    color: #8a2d06;
+}
+.userEmail:hover{
+    color: var(--buttonColor);
+}
+.cartBtn{
+    border: 1.9px solid #df4604;
+}
+.cartIcon, .person{
+    height: 1.8rem;
+    width: 1.8rem;
+    margin-bottom: 0.4rem;
+    margin-right: 0.3rem;
+}
+.cartBtn a{
+    /* color: black !important; */
+    color: var(--buttonColor) !important;
+    font-size: 1.3rem !important;
+    letter-spacing: 0.06rem;
+    margin-top: 4rem !important;
+}
+.cartBtn a:hover{
+    color: white !important;
+}
+.cartBtn a span{
+    font-size: 1.5rem;
+}
+.cartBtn a span:hover, .cartBtn:hover{
+    color: white !important;
+}
+.cartBtn:hover{
+    background-color: #f85814;
+}
+
 /* @media screen and (min-width:890) and (max-width: 1035) {
     nav a{
       color: white !important;
@@ -159,6 +196,12 @@ header .nav-btn {
         margin-bottom: -1%;
     }
     nav a{
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
 }   
+@media screen and (min-width: 1200px) {
+    .userEmail{
+        margin-left: 4rem;
+        font-size: 1.2rem;
+    }
+}

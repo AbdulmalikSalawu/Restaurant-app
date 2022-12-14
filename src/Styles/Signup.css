@@ -55,7 +55,7 @@ span{
     color: var(--buttonColor);
 }
 @media screen and (min-width: 801px) {
-    .inputcont{
+    .inputcont, .inputcont2{
         /* background: rgba(255, 255, 255, 0.2); */
         background-color: white;
         border-radius: 16px;
