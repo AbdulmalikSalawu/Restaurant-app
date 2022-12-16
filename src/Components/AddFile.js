@@ -15,9 +15,12 @@ function AddFile() {
     let itemArray = [];
         onValue(itemDb, (snapshot)=> {
         itemArray = snapshot.val();
+        function displayImages(itemArray) {
+            console.log(itemArray.imageURL)
+        }
             if (itemArray) {
                 itemId = itemArray.length
-                // displayImages(itemArray)
+                displayImages(itemArray)
             }
             else {
                 itemId = 0;
@@ -45,17 +48,10 @@ function AddFile() {
                 let itemObj = {itemName, itemPrice, imageURL}
                 let dbRef = ref (db, `items/${itemId}`)
                 set (dbRef, itemObj);
-                alert("sent")
+                alert("sent") 
              })
             })
         }
-        
-    // const saveItem = async () => {
-    //     let itemObj = {itemName, itemPrice}
-    //     let dbRef = ref (db, `items/${itemId}`)
-    //     await set (dbRef, itemObj);
-    //     alert("sent")
-    // }
 
   return (
     <div>
@@ -64,6 +60,23 @@ function AddFile() {
         <input type='file' accept="image/*" placeholder='file' onChange={e => {setItemFile(e.target.files[0])}} />
         <button className='btn btn-success px-3 py-1 w-25 fs-5 d-block m-auto mt-4' onClick={saveItem}>SAVE</button>
         <p className='fs-4 text-info text-center mt-5'>{`${percentage}%`}</p>
++
+        {
+            itemArray.map((item, index) => (
+                <div key={index}>
+                    <img src={item.imageURL} />,
+                    {item.itemName},
+                    {item.itemPrice}
+                </div>
+            ))
+        }
+        {/* {
+            itemArray.map((item, index) => {
+                return(
+                   <img src={item.imageURL} alt="error" />
+                )
+            })
+        }  */}
     </div>
   )
 }

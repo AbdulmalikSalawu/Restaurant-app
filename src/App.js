@@ -10,12 +10,14 @@ import NoMatch from './Components/NoMatch';
 import WhyChoose from './Components/WhyChoose';
 import Dashboard from './Components/Dashboard';
 import AddFile from './Components/AddFile';
+// import Main from './Components/Main';
 
 function App() {
   return (
     <div>
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          {/* <Route path='/main' element={<Main />}></Route> */}
           <Route path='/whychoose' element={<WhyChoose />}></Route>
           <Route path='about' element={<About />} />
           <Route path='testimonials' element={<Testimonials />} />

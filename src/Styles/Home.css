@@ -36,10 +36,7 @@ p{
     background-color: #8a2d06;
     color: white;
 }
-.impressions{
-    display: flex;
-    justify-content: center;
-}
+
 .partners{
     font-size: 1rem;
     margin-top: -1.3rem;
@@ -85,5 +82,11 @@ p{
     .partners{
         font-size: 1.2rem;
         margin-top: 1rem;
+    }
+}
+@media screen and (min-width:1000px) {
+    .impressions{
+        display: flex;
+        justify-content: center;
     }
 }

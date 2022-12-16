@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import '../Styles/Nav.css'
 
+
 function Nav() {
     const navRef = useRef();
     const navigate = useNavigate()

@@ -95,7 +95,6 @@ header .nav-btn {
     margin-right: 0.3rem;
 }
 .cartBtn a{
-    /* color: black !important; */
     color: var(--buttonColor) !important;
     font-size: 1.3rem !important;
     letter-spacing: 0.06rem;
@@ -107,19 +106,11 @@ header .nav-btn {
 .cartBtn a span{
     font-size: 1.5rem;
 }
-.cartBtn a span:hover, .cartBtn:hover{
-    color: white !important;
-}
 .cartBtn:hover{
     background-color: #f85814;
 }
 
-/* @media screen and (min-width:890) and (max-width: 1035) {
-    nav a{
-      color: white !important;
-    }
-} */
-@media screen and (min-width: 881px) and (max-width: 1080px) {
+@media screen and (min-width: 881px) and (max-width: 1090px) {
     nav a{
         margin: 0 0.5rem;
     }
@@ -128,6 +119,9 @@ header .nav-btn {
     }
     h4{
         margin-top: -2rem;
+    }
+    .cartBtn{
+        margin: 0 !important;
     }
 }
 
@@ -176,6 +170,9 @@ header .nav-btn {
     }
     .loginbtn, .signupbtn{
         margin-left: 0rem;
+    }
+    .fs-7{
+        font-size: 1.15rem !important;
     }
     /* @keyframes slide {
         0% {
