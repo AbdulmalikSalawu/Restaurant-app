@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {useFormik} from 'formik';
 import {basicSchema} from '../Schemas/loginSchema';
 import {signInWithEmailAndPassword} from 'firebase/auth'
@@ -9,18 +9,18 @@ import '../Styles/Signup.css'
 function Login() {
 
     const navigate=useNavigate()
+    const [firebaseError, setFirebaseError] = useState("")
 
     const onSubmit = async (values, actions) => {
+      setFirebaseError("")
       console.log(values);
-      console.log("Submitted");
       new Promise((resolve) => setTimeout(resolve, 1000));
       try {
         await signInWithEmailAndPassword(auth, values.email, values.password)
-        // console.log(user);
         actions.resetForm();
         navigate('/dashboard')
       } catch (error) {
-        console.log(error.message);
+        setFirebaseError(error.message)
       }
   }
 
@@ -41,6 +41,8 @@ function Login() {
     <div className='signupbody'>
       <div className='inputcont2 col-lg-4 mt-5  text-center pt-4 pb-3'>
       <div className='mt-4 fs-4 fw-bold text-black'><span>Welcome</span> Back</div>
+
+      {firebaseError ? <p className='error'>{firebaseError}</p> : ""}
 
         <input type='text' name='email' value={values.email} placeholder='email' onChange={handleChange} onBlur={handleBlur} /><br />
         {errors.email && touched.email && <p className='error'>{errors.email}</p>}

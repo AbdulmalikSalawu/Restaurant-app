@@ -2,6 +2,7 @@ import React from 'react'
 import '../Styles/Home.css'
 import mainfood from '../Assets/mainmeal.png'
 import WhyChoose from './WhyChoose'
+import About from './About'
 
 function Main() {
   return (
@@ -33,6 +34,7 @@ function Main() {
           </div>
       </div>
       <WhyChoose />
+      <About />
     </div>
   )
 }

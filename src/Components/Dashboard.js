@@ -1,11 +1,12 @@
 import React, { useState,useEffect,useRef } from 'react'
 import {ref, set, onValue} from 'firebase/database'
 import {onAuthStateChanged} from 'firebase/auth'
-import {auth, myStorage, db} from '../Schemas/firebase-config'
+import {auth, db} from '../Schemas/firebase-config'
 import {useNavigate} from 'react-router-dom'
 import Nav2 from './Nav2';
 import Main from './Main'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogIn } from '../features/navbarSlice'
 
 function Dashboard() {
 
@@ -13,7 +14,11 @@ function Dashboard() {
 
     const [myUser, setMyUser] = useState({})
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+      dispatch(setLogIn())
+    }, [])
 
     useEffect(() => {
       onAuthStateChanged(auth, (user)=> {
@@ -28,7 +33,6 @@ function Dashboard() {
 
   
     let itemId = 0;
-    
 
     let itemDb = ref(db, "items");
     let itemArray = [];
@@ -46,8 +50,8 @@ function Dashboard() {
   return (
     <div>
       <Nav2 />
-        <h3 className='text-center mt-5'>Hi, {myUser?.email}, Welcome to your dashboard</h3>
       {showNav ? (<Main />) : ""}
+      <h3 className='text-center mt-5'>Hi, {myUser?.email}, Welcome to your dashboard</h3>
       {
             itemArray?.map((item, index) => (
                 <div key={index}>

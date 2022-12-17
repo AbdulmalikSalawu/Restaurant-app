@@ -109,6 +109,9 @@ header .nav-btn {
 .cartBtn:hover{
     background-color: #f85814;
 }
+.fs-7{
+    font-size: 1.15rem !important;
+}
 
 @media screen and (min-width: 881px) and (max-width: 1090px) {
     nav a{
@@ -171,9 +174,7 @@ header .nav-btn {
     .loginbtn, .signupbtn{
         margin-left: 0rem;
     }
-    .fs-7{
-        font-size: 1.15rem !important;
-    }
+    
     /* @keyframes slide {
         0% {
             transform: translateX(-10px);
@@ -185,6 +186,9 @@ header .nav-btn {
 }
 
 @media screen and (max-width: 500px) {
+    .fs-7{
+        font-size: 1.15rem !important;
+    }
     nav .nav-close-btn{
         right: 2rem;
     }

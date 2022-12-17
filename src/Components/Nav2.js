@@ -10,7 +10,7 @@ import cart from '../Assets/cart2.svg';
 import person from '../Assets/person.svg';
 import '../Styles/Nav.css'
 import {useDispatch} from 'react-redux'
-import {setShow, removeShow} from '../features/navbarSlice'
+import {setShow, removeShow,setnavbar,removenavbar} from '../features/navbarSlice'
 
 function Nav2() {
 
@@ -30,6 +30,7 @@ function Nav2() {
           }
           else {
             navigate(-1)
+            // navigate("/login")
          }
      });
     }, [])
@@ -47,16 +48,21 @@ function Nav2() {
   }
   const toggle2 = () => {
     dispatch(setShow())
+    dispatch(setnavbar())
   }
+  const toggle3 = () => {
+    dispatch(setShow())
+    dispatch(removenavbar())
+}
 
   return (
     <div>
          <header>
             <h4 className='ms-lg-5'><img className='mt-5' src={logo} alt="svg image" /></h4>
             <nav ref={navRef} className='pb-2'>
-                <NavLink className='ms-lg-5 ps-lg-5' onClick={showNavbar} to ='/dashboard'><small className='fs-7' onClick={toggle2}>Home</small></NavLink>
-                <NavLink onClick={showNavbar} to='/about'>About Us</NavLink>
-                <NavLink className='me-lg-3' onClick={showNavbar} to='/testimonials'><small className='fs-7' onClick={toggle2}>Our dishes</small></NavLink>
+                <NavLink className='ms-lg-5 ps-lg-5' onClick={showNavbar} to ='/dashboard'><small className='fs-7' onClick={toggle3}>Home</small></NavLink>
+                <NavLink onClick={showNavbar} to='/about'><small className='fs-7' onClick={toggle2}>About us</small></NavLink>
+                <NavLink className='me-lg-3' onClick={showNavbar} to='/ourdishes'><small className='fs-7' onClick={toggle2}>Our dishes</small></NavLink>
                 <button className='ms-lg-5 px-2 py-1 text-white loginbtn cartBtn'>
                     <NavLink onClick={showNavbar}>
                         <img className='cartIcon' src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>8</span>
