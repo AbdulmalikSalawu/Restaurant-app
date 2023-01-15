@@ -3,8 +3,11 @@ import '../Styles/Home.css'
 import mainfood from '../Assets/mainmeal.png'
 import WhyChoose from './WhyChoose'
 import About from './About'
+import OurDishes from './OurDishes'
 
 function Main() {
+  
+
   return (
     <div>
         <div className='row '>
@@ -35,6 +38,7 @@ function Main() {
       </div>
       <WhyChoose />
       <About />
+      <OurDishes />
     </div>
   )
 }

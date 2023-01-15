@@ -1,17 +1,24 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import '../Styles/Whychoose.css'
 import card1 from '../Assets/cardimg6.png';
 import card2 from '../Assets/cardimg4.png';
 import card3 from '../Assets/cardimg2.png'
-import Nav from './Nav';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setnavbar, setShow } from '../features/navbarSlice';
 
 function WhyChoose() {
-    const showNav2 = useSelector((state) => state.navbar.navbar)
+    // const showNav2 = useSelector((state) => state.navbar.navbar)
     const showNav = useSelector((state) => state.navbar.show)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setnavbar())
+        dispatch(setShow())
+      }, [])
+
   return (
     <div>
-        {showNav2? (<Nav />): ""}
+        {/* {showNav2? (<Nav />): ""} */}
         {showNav? (
         <div>
             <div className='text-center mt-5'>

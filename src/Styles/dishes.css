@@ -1,0 +1,21 @@
+.container{
+    min-height: 10rem;
+    background-color: white !important;
+    margin-top: 0rem !important;
+}
+.card{
+    background-color: #fff0f0;
+    min-height: 27rem;
+}
+.card-body{
+    overflow-y: hidden;
+}
+.card-img-top{
+    width: 14rem;
+    height: 14rem !important;
+    border-radius: 50%;
+}
+.cardcontainer{
+    display: flex;
+    justify-content: center;
+}

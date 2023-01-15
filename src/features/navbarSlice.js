@@ -27,10 +27,16 @@ export const navbarSlice = createSlice({
 		},
 		setLogout: (state) => {
 			state.isLoggedin = false
+		},
+		neutralUser: (state) => {
+			state.isLoggedin = null
 		}
 	},
 })
 
-export const {setShow, removeShow, setnavbar, removenavbar,setLogIn,setLogout} = navbarSlice.actions
+export const {
+	setShow, removeShow,
+	setnavbar, removenavbar,
+	setLogIn,setLogout,neutralUser} = navbarSlice.actions
 
 export default navbarSlice.reducer

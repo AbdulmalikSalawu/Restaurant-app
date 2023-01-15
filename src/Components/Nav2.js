@@ -23,18 +23,6 @@ function Nav2() {
 
     const dispatch = useDispatch();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user)=> {
-      if (user){
-        setMyUser(user)
-          }
-          else {
-            navigate(-1)
-            // navigate("/login")
-         }
-     });
-    }, [])
-
     const logout = () => {
       signOut(auth);
       navigate(-1, {replace: true})

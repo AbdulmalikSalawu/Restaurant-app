@@ -15,7 +15,7 @@ h2{
 }
 .cardcontainer{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly !important;
 }
 .card-text{
     margin-left: 0 !important;
@@ -25,7 +25,7 @@ h2{
 
 @media screen and (max-width:850px) {
     .card{
-        width: 91%;
+        width: 91% !important;
         margin: auto;
         margin-top: 1.4rem;
         height: 22rem;
@@ -36,7 +36,7 @@ h2{
         padding: 0 !important;
         padding-bottom: 2rem !important;
     }
-    .cardcontainer{display: block;}
+    .cardcontainer{display: block !important;}
 }
 @media screen and (min-width:1150px) {
     .card{width: 18.5rem;}

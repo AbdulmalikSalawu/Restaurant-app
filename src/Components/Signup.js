@@ -1,16 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {useFormik} from 'formik';
 import {basicSchema} from '../Schemas/schema';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {ref, set, onValue} from 'firebase/database'
 import {auth, db} from '../Schemas/firebase-config'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {neutralUser, setShow} from '../features/navbarSlice'
 import '../Styles/Signup.css'
 
 function Signup() {
   
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [firebaseError, setFirebaseError] = useState("")
+
+    useEffect(() => {
+      dispatch(neutralUser())
+      dispatch(setShow())
+    }, []) 
 
     let userId = 0;
     let userDb = ref(db,"users");

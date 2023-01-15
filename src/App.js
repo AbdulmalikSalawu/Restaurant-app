@@ -9,13 +9,18 @@ import WhyChoose from './Components/WhyChoose';
 import Dashboard from './Components/Dashboard';
 import AddFile from './Components/AddFile';
 import OurDishes from './Components/OurDishes';
+import Nav from './Components/Nav';
+import Nav2 from './Components/Nav2';
+import { useSelector } from 'react-redux';
+import CartPage from './Components/CartPage';
 
 function App() {
+  const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
   return (
     <div>
+      {isLoggedin===true ? (<Nav2 />) : isLoggedin===false ? (<Nav />):  ""}
         <Routes>
           <Route path='/' element={<Home />}></Route>
-          {/* <Route path='/main' element={<Main />}></Route> */}
           <Route path='/whychoose' element={<WhyChoose />}></Route>
           <Route path='about' element={<About />} />
           <Route path='ourdishes' element={<OurDishes />} />
@@ -23,6 +28,7 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='addfile' element={<AddFile />} />
+          <Route path='carts' element={<CartPage />} />
           <Route path='*' element={<NoMatch />} />
       </Routes>
     </div>

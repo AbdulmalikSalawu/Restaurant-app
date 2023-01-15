@@ -2,21 +2,23 @@ import React, { useEffect } from 'react'
 import '../Styles/Home.css'
 import mainfood from '../Assets/mainmeal.png'
 import WhyChoose from './WhyChoose'
-import Nav from './Nav'
+// import Nav from './Nav'
 import { useDispatch, useSelector } from 'react-redux';
-import {setLogout} from '../features/navbarSlice'
+import {setLogout,removenavbar} from '../features/navbarSlice'
 import About from './About'
+import OurDishes from './OurDishes'
 
 function Home() {
   const showNav = useSelector((state) => state.navbar.show)
   const dispatch = useDispatch()
     useEffect(() => {
       dispatch(setLogout())
+      dispatch(removenavbar())
     }, [])
     
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
       {showNav ? (
         <div>
           <div className='row '>
@@ -47,6 +49,7 @@ function Home() {
       </div>
       <WhyChoose />
       <About />
+      <OurDishes />
     </div>
       ) : ""}
       

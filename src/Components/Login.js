@@ -1,15 +1,23 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {useFormik} from 'formik';
 import {basicSchema} from '../Schemas/loginSchema';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from '../Schemas/firebase-config'
 import { useNavigate } from 'react-router-dom';
+import {neutralUser,setShow} from '../features/navbarSlice'
 import '../Styles/Signup.css'
+import { useDispatch } from 'react-redux';
 
 function Login() {
 
-    const navigate=useNavigate()
+    const navigate=useNavigate();
+    const dispatch = useDispatch()
     const [firebaseError, setFirebaseError] = useState("")
+
+    useEffect(() => {
+      dispatch(neutralUser())
+      dispatch(setShow())
+    }, []) 
 
     const onSubmit = async (values, actions) => {
       setFirebaseError("")

@@ -36,16 +36,18 @@ p{
     background-color: #8a2d06;
     color: white;
 }
-
 .partners{
     font-size: 1rem;
     margin-top: -1.3rem;
 }
 .mainfood{
     margin-top: -6.9rem;
-    width: 26rem;
+    width: 27rem;
     height: 31rem;
     border-radius: 50%;
+}
+.px-4{
+    font-size: 1.3rem !important;
 }
 @media screen and (max-width:1000px) {
     .mainfood{
@@ -70,7 +72,7 @@ p{
     }
     .mainfood{
         height: 23rem;
-        width: 20rem;
+        width: 22rem;
         display: block;
         margin: auto;
         margin-top: -4rem;
@@ -88,5 +90,8 @@ p{
     .impressions{
         display: flex;
         justify-content: center;
+    }
+    .px-4{
+        font-size: 1.6rem !important;
     }
 }
