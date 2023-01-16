@@ -11,7 +11,6 @@ function AddFile() {
     const [percentage, setPercentage] = useState("")
 
     let itemId = 0;
-    
     let itemDb = ref(db, "items");
     let itemArray = [];
         onValue(itemDb, (snapshot)=> {

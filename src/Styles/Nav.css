@@ -133,6 +133,9 @@ header .nav-btn {
         visibility: visible;
         opacity: 1;
     }
+    /* small{
+        margin-top: 3rem;
+    } */
     header nav{
         position: fixed;
         top: 0;

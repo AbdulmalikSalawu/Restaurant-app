@@ -8,7 +8,6 @@ import '../Styles/Nav.css'
 import {useDispatch} from 'react-redux'
 import {setShow, removeShow,setnavbar,removenavbar} from '../features/navbarSlice'
 
-
 function Nav() {
     const navRef = useRef();
     const navigate = useNavigate()

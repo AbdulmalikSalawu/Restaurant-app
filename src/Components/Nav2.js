@@ -42,6 +42,9 @@ function Nav2() {
     dispatch(setShow())
     dispatch(removenavbar())
 }
+    const goToCart = () => {
+        navigate('/carts')
+    }
 
   return (
     <div>
@@ -51,7 +54,7 @@ function Nav2() {
                 <NavLink className='ms-lg-5 ps-lg-5' onClick={showNavbar} to ='/dashboard'><small className='fs-7' onClick={toggle3}>Home</small></NavLink>
                 <NavLink onClick={showNavbar} to='/about'><small className='fs-7' onClick={toggle2}>About us</small></NavLink>
                 <NavLink className='me-lg-3' onClick={showNavbar} to='/ourdishes'><small className='fs-7' onClick={toggle2}>Our dishes</small></NavLink>
-                <button className='ms-lg-5 px-2 py-1 text-white loginbtn cartBtn'>
+                <button onClick={goToCart} className='ms-lg-5 px-2 py-1 text-white loginbtn cartBtn'>
                     <NavLink onClick={showNavbar}>
                         <img className='cartIcon' src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>8</span>
                     </NavLink>

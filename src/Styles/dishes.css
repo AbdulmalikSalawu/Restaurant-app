@@ -4,15 +4,16 @@
     margin-top: 0rem !important;
 }
 .card{
-    background-color: #fff0f0;
+    background-color: #f8f2f2;
     min-height: 27rem;
 }
 .card-body{
     overflow-y: hidden;
 }
 .card-img-top{
-    width: 14rem;
-    height: 14rem !important;
+    width: 15rem;
+    height: 15rem !important;
+    margin-top: 2rem;
     border-radius: 50%;
 }
 .cardcontainer{
