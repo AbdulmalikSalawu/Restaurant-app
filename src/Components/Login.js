@@ -50,7 +50,7 @@ function Login() {
       <div className='inputcont2 col-lg-4 mt-5  text-center pt-4 pb-3'>
       <div className='mt-4 fs-4 fw-bold text-black'><span>Welcome</span> Back</div>
 
-      {firebaseError ? <p className='error'>{firebaseError}</p> : ""}
+      {firebaseError ? <p className='error'>{firebaseError.replace("auth/", "")}</p> : ""}
 
         <input type='text' name='email' value={values.email} placeholder='email' onChange={handleChange} onBlur={handleBlur} /><br />
         {errors.email && touched.email && <p className='error'>{errors.email}</p>}

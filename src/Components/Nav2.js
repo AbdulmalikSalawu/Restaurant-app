@@ -60,12 +60,13 @@ function Nav2() {
   return (
     <div>
          <header>
-            <h4 className='ms-lg-5'><img className='mt-5' src={logo} alt="svg image" /></h4>
+            <h4 className='ms-lg-5'><img className='mt-5 pe-3 pe-lg-0 ' src={logo} alt="svg image" /></h4>
+            <img onClick={goToCart} className='cartIcon navCart d-md-none mt-3' src={cart} alt='cart icon'></img><span className='cartNavNo mt-3 fs-2 fw-bold'>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
             <nav ref={navRef} className='pb-2'>
-                <NavLink className='ms-lg-5 ps-lg-5' onClick={showNavbar} to ='/dashboard'><small className='fs-7' onClick={toggle3}>Home</small></NavLink>
+                <NavLink className='ms-lg-1 ps-lg-5' onClick={showNavbar} to ='/dashboard'><small className='fs-7' onClick={toggle3}>Home</small></NavLink>
                 <NavLink onClick={showNavbar} to='/about'><small className='fs-7' onClick={toggle2}>About us</small></NavLink>
                 <NavLink className='me-lg-3' onClick={showNavbar} to='/ourdishes'><small className='fs-7' onClick={toggle2}>Our dishes</small></NavLink>
-                <button onClick={goToCart} className='ms-lg-5 px-2 py-1 text-white loginbtn cartBtn'>
+                <button onClick={goToCart} className='ms-lg-4 px-2 py-1 text-white loginbtn cartBtn'>
                     <NavLink onClick={showNavbar}>
                         <img className='cartIcon' src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
                     </NavLink>

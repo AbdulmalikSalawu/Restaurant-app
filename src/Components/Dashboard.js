@@ -37,7 +37,7 @@ function Dashboard() {
   return (
     <div>
       {/* <Nav2 /> */}
-      <h3 className='text-center mt-3'>Hi, {myUser?.email}</h3>
+      <h3 className='text-center mt-3'>Hello, {myUser?.email.replace("@gmail.com", "").toUpperCase()}</h3>
       {showNav ? (<Main />) : ""}
     </div>
   )
