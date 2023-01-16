@@ -7,15 +7,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setLogout,removenavbar} from '../features/navbarSlice'
 import About from './About'
 import OurDishes from './OurDishes'
+import { useNavigate } from 'react-router';
 
 function Home() {
   const showNav = useSelector((state) => state.navbar.show)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
     useEffect(() => {
       dispatch(setLogout())
       dispatch(removenavbar())
     }, [])
     
+  const orderNow = () => {
+      navigate('/ourdishes')
+  }
+
   return (
     <div>
       {/* <Nav /> */}
@@ -25,7 +31,7 @@ function Home() {
             <div className='col-sm-12 col-md-10 col-lg-7'>
               <h1>Cooking gone wrong?, <span className='ord'>Order food </span>you <span className='ord'> love</span> delivered now!</h1>
               <p className='pe-lg-5'>Anything, anytime, anywhere, we've got you!. Helping you enjoy confortable and health food on the go</p>
-              <button className='orderButton px-3 py-2 fs-5'>Order now</button>
+              <button onClick={orderNow} className='orderButton px-3 py-2 fs-5'>Order now</button>
             </div>
             <div className='col-lg-5'>
                 <img className='mainfood ms-lg-5' src={mainfood} alt='jollof picture' />

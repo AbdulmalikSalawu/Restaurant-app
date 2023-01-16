@@ -6,15 +6,22 @@ import {db} from '../Schemas/firebase-config'
 // import Nav2 from './Nav2';
 import { setnavbar,setShow } from '../features/navbarSlice';
 import { addToCart } from '../features/cartSlice';
+import { useNavigate } from 'react-router';
 
 function OurDishes() {
 //   const showNav2 = useSelector((state) => state.navbar.navbar)
 //   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
   const showNav = useSelector((state) => state.navbar.show)
+  const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleAddToCart = (item) => {
-    dispatch(addToCart(item))
+    if(isLoggedin===true){    
+      dispatch(addToCart(item))
+    } else {
+      navigate('/login')
+    }
 };
 
   useEffect(() => {
@@ -34,9 +41,7 @@ function OurDishes() {
             else {
                 itemId = 0;
             }
-        })
-
-       
+        })    
 
   return (
     <div>
@@ -57,7 +62,7 @@ function OurDishes() {
                                 <h5 className="card-title text-center fw-bold">{item.itemName}</h5>
                                 <p className="card-text text-center">${item.itemPrice}</p>
                             </div>
-                            <button onClick={() => handleAddToCart(item)} className='signupbtn w-75 m-auto mb-3'>Add to cart</button>
+                            <button onClick={() => handleAddToCart(item)} className='signupbtn w-75 m-auto mb-3'>{isLoggedin ? "Add to cart" : "Order"}</button>
                         </div>
                     </div>
                 </div>

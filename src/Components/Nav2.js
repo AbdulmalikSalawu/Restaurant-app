@@ -9,17 +9,28 @@ import { NavLink } from 'react-router-dom';
 import cart from '../Assets/cart2.svg';
 import person from '../Assets/person.svg';
 import '../Styles/Nav.css'
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import {setShow, removeShow,setnavbar,removenavbar} from '../features/navbarSlice'
 
 function Nav2() {
 
     const [myUser, setMyUser] = useState({})
+    const myCart = useSelector((state) => state.cart.cartItems)
     const navRef = useRef();
     const navigate = useNavigate()
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav")
     }
+    useEffect(() => {
+        onAuthStateChanged(auth, (user)=> {
+          if (user){
+            setMyUser(user)
+              }
+              else {
+                navigate("/login")
+             }
+         });
+        }, [])
 
     const dispatch = useDispatch();
 
@@ -56,14 +67,15 @@ function Nav2() {
                 <NavLink className='me-lg-3' onClick={showNavbar} to='/ourdishes'><small className='fs-7' onClick={toggle2}>Our dishes</small></NavLink>
                 <button onClick={goToCart} className='ms-lg-5 px-2 py-1 text-white loginbtn cartBtn'>
                     <NavLink onClick={showNavbar}>
-                        <img className='cartIcon' src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>8</span>
+                        <img className='cartIcon' src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
                     </NavLink>
                 </button>
                 <NavLink className='userEmail'>
                     <img src={person} alt="icon" className='person'></img>
                     <i>{myUser?.email}</i>
+                    <span className='d-md-none'>{myUser?.email}</span>
                 </NavLink>
-                <button onClick={logout} className='ms-lg-1 text-white signupbtn dashLog'>
+                <button onClick={logout} className='ms-lg-1 px-3 text-white signupbtn dashLog'>
                     <NavLink onClick={showNavbar}>Logout</NavLink>
                 </button>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>

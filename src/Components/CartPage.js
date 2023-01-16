@@ -1,10 +1,16 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import '../Styles/cart.css'
+import carti from '../Assets/cart2.svg';
+import { setLogIn } from '../features/navbarSlice';
 
 function CartPage() {
 
     const cart = useSelector((state) => state.cart)
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(setLogIn())
+    }, [])
 
   return (
     <div>
@@ -12,7 +18,7 @@ function CartPage() {
             <p>Your cart is currently empty</p>
         ) : (
           <div className='cart-container px-4 py-3 mb-5 col-sm-10 col-md-10 col-lg-9 d-block m-auto mt-4 shadow'>
-            <h3 className='text-center mb-5'>Shopping Cart</h3>
+            <h3 className='text-center mb-5'>Shopping Cart<span><img className='cartIcon2 ms-2' src={carti} alt='cart icon'></img></span></h3>
             {
             cart.cartItems?.map(myCart => (
                 <div className='cart-body'>
