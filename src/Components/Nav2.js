@@ -61,7 +61,7 @@ function Nav2() {
     <div>
          <header>
             <h4 className='ms-lg-5'><img className='mt-5 pe-3 pe-lg-0 ' src={logo} alt="svg image" /></h4>
-            <img onClick={goToCart} className='cartIcon navCart d-md-none mt-3' src={cart} alt='cart icon'></img><span className='cartNavNo mt-3 fs-2 fw-bold'>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
+            <img onClick={goToCart} className='cartIcon navCart d-md-none mt-3' src={cart} alt='cart icon'></img><span className='cartNavNo mt-3 fs-2 fw-bold d-md-none'>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
             <nav ref={navRef} className='pb-2'>
                 <NavLink className='ms-lg-1 ps-lg-5' onClick={showNavbar} to ='/dashboard'><small className='fs-7' onClick={toggle3}>Home</small></NavLink>
                 <NavLink onClick={showNavbar} to='/about'><small className='fs-7' onClick={toggle2}>About us</small></NavLink>

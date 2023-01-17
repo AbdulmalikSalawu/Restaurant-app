@@ -13,12 +13,13 @@ function OurDishes() {
 //   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
   const showNav = useSelector((state) => state.navbar.show)
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
+  const myCart = useSelector((state) => state.cart.cartItems)
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
   const handleAddToCart = (item) => {
     if(isLoggedin===true){    
-      dispatch(addToCart(item))
+      dispatch(addToCart(item));
     } else {
       navigate('/login')
     }

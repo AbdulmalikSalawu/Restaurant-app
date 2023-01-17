@@ -1,5 +1,5 @@
 import React, { useState,useEffect,useRef } from 'react'
-import {ref, set, onValue} from 'firebase/database'
+// import {ref, set, onValue} from 'firebase/database'
 import {onAuthStateChanged} from 'firebase/auth'
 import {auth, db} from '../Schemas/firebase-config'
 import {useNavigate} from 'react-router-dom'
@@ -17,6 +17,7 @@ function Dashboard() {
     }, [])
 
     const [myUser, setMyUser] = useState({})
+    // const [newUser, setNewUser] = useState()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -37,7 +38,8 @@ function Dashboard() {
   return (
     <div>
       {/* <Nav2 /> */}
-      <h3 className='text-center mt-3'>Hello, {myUser?.email.replace("@gmail.com", "").toUpperCase()}</h3>
+      <h3 className='text-center mt-3'>Hi, {myUser?.email}</h3>
+      {/* <h3 className='text-center mt-3'>Hi, {myUser?.email.replace("@gmail.com", "").toUpperCase()} 😃</h3> */}
       {showNav ? (<Main />) : ""}
     </div>
   )

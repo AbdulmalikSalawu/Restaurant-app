@@ -184,7 +184,7 @@ header .nav-btn {
     }
     .cartNavNo{
         position: relative;
-        left: 4.5rem;
+        left: 4rem;
         color: #df4604 !important;
     }
     .pe-lg-0{margin-top: 3.4rem !important;}
@@ -207,9 +207,8 @@ header .nav-btn {
         right: 2rem;
     }
     .nav-open-btn{
-        margin-left: 45%;
-
-        margin-bottom: -1%;
+        margin-left: 40%;
+        margin-bottom: -2%;
     }
     nav a{
         font-size: 1.15rem;
