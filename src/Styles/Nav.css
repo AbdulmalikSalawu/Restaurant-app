@@ -15,7 +15,7 @@ header{
     align-items: center;
     justify-content: space-between;
     height: 69px;
-    background-color: var(--mainColorLight);
+    background-color: var(--mainColorLight) !important;
     color: var(--textColor);
 }
 nav{

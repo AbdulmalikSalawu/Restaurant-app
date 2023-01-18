@@ -1,15 +1,22 @@
+.cartBody{
+    /* background-color: #fbf8f7; */
+    height: 100vh;
+}
 h3,.cartItemName{
     color: #ff4d00 !important;
 }
 .cart-container{
-    border-radius: 15px;
-    
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 8px 5px -2px !important;
+    max-height: 23.5rem;
 }
 span{
     color: black !important;
 }
 .cart-body{
-    margin-top: 2.5rem;
+    margin-top: 0.5rem;
+    overflow-y: hidden;
     height: 7rem;
     display: flex;
     flex-direction: row;
@@ -26,9 +33,10 @@ span{
     position: relative;
     top: -1.8rem;
     width: 10rem;
+    overflow-y: hidden;
 }
 .cartInp{
-    width: 4rem;
+    width: 5rem;
     border: thin solid grey;
     border-radius: 4px;
 }
@@ -50,12 +58,15 @@ hr{
     width: 2rem;
     margin-top: -0.4rem;
 }
+.removeBtn:hover{
+    background-color: #4e1a02;
+}
 .buyAll,.removeAll{
-    background-color: #ff4d00;
+    background-color: #4e1a02;
     border-radius: 5px;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     position: relative;
     top: -2rem;
     /* cursor: pointer; */
@@ -67,7 +78,7 @@ hr{
     
 }
 .buyAll:hover{
-    background-color: #4e1a02;
+    background-color:  #ff4d00;
 }
 .removeAll:hover{
     color: red!important;
@@ -76,32 +87,36 @@ hr{
 
 @media screen and (max-width: 800px) {
     .cartImg{
-        width: 7rem;
-        height: 6rem;
+        width: 11rem !important;
+        height: 5.5rem !important;
         border-radius: 50%;
     }
     .cart-container{
-        width: 90%;
+        /* width: 100%; */
+        border-radius: 5px;
+        max-height: 34rem;
+        background: none !important;
+        box-shadow: 0px !important;
     }
     .cartItemName{
         width: 12rem;
-        margin-left: 2rem;
+        margin-left: 2.4rem;
         font-size: 1rem;
         font-weight: normal;
     }
     .cart-body{
         margin: auto;
-        width: 95%;
-        height: 7.4rem;
+        width: 98%;
+        height: 7.2rem;
         overflow-y: hidden !important;
-        background-color: #f8f2f2;
+        background-color: #fbf8f7;
         border-radius: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     .cartPrice{
         width:8rem;
         position: relative;
-        left: 2rem;
+        left: 0.8rem;
         font-weight: bold;
         top: 0.5rem;
         font-size: 1rem;
@@ -119,6 +134,7 @@ hr{
         margin-left: 8rem;
         top: -0.3rem;
         border: none;
+        font-size: 1.5rem !important;
     }
     .optionBtns{
         width: 100%;
@@ -129,7 +145,7 @@ hr{
         visibility: visible !important;
     }
     .deleteFood{
-        left: 1.3rem;
+        left: 1.8rem;
         top: 0.5rem;
         border: thin solid black;
         background-color: white;
@@ -150,6 +166,9 @@ hr{
     }
     .buyAll,.removeAll{
         width: 92%;
+    }
+    .qtyBtns{
+        width: 3rem;
     }
 }
 @media screen and (min-width: 801px) and (max-width: 899px) {
@@ -181,5 +200,33 @@ hr{
     }
     .cart-container{
         width: 95% !important;
+    }
+}
+@media screen and (max-width:399px) {
+    h3{font-size: 1.2rem !important;}
+    .cart-container{max-height: 20rem; width: 100%;}
+    .cart-body{width: 20rem; overflow-x: scroll;;}
+    .buyAll,.removeAll,.cartPrice{font-size: 0.8rem;}
+    .cartInp{
+        font-size: 1rem !important;
+        width: 10rem;
+        position: relative;
+    }
+    .deleteFood,.orderFood{
+        font-size: 0.8rem;
+    }
+    .cartItemName{
+        width: 8rem;
+        position: relative;
+        left: -1.3rem;
+        top: 0.5rem;
+    }
+    .cartPrice{
+        position: relative;
+        left: 2rem;
+    }
+    .qtyBtns{
+        position: relative;
+        left: -1.5rem;
     }
 }

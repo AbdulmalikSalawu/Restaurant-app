@@ -68,7 +68,7 @@ function Nav2() {
                 <NavLink className='me-lg-3' onClick={showNavbar} to='/ourdishes'><small className='fs-7' onClick={toggle2}>Our dishes</small></NavLink>
                 <button onClick={goToCart} className='ms-lg-4 px-2 py-1 text-white loginbtn cartBtn'>
                     <NavLink onClick={showNavbar}>
-                        <img className='cartIcon' src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
+                        <img className='cartIcon' onClick={toggle2} src={cart} alt='cart icon'></img><small className='fs-7' onClick={toggle2}>Cart</small> <span>{myCart.length>=0 ? `${myCart.length}` : "0"}</span>
                     </NavLink>
                 </button>
                 <NavLink className='userEmail'>
