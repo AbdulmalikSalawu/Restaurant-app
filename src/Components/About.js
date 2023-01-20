@@ -4,11 +4,15 @@ import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setnavbar } from '../features/navbarSlice';
 import xyz from '../Assets/jollofRice.jpg'
+import { useNavigate } from 'react-router';
+import arrow from '../Assets/arrow-left.svg'
 
 function About() {
   // const showNav2 = useSelector((state) => state.navbar.navbar)
   // const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
+  const backIcon = useSelector((state) => state.navbar.backIcon)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(setnavbar())
@@ -17,8 +21,8 @@ function About() {
   return (
     <div>
       {/* {showNav2 && isLoggedin===true ? (<Nav2 />) : showNav2 && isLoggedin===false ? (<Nav />):  ""} */}
-      
-        <h2 className='fs-1 text-center mt-4'>About Us</h2>
+      {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
+        <h2 className='fs-1 text-center'>About Us</h2>
         <div className='container bg-white'>
             <div className='row'>
               <div className='mt-3 col-sm-12 col-md-10 col-lg-6 px-4 fs-4'>

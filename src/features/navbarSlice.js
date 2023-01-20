@@ -3,7 +3,8 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
 	show: true,
 	navbar: false,
-	isLoggedin: false
+	isLoggedin: false,
+	backIcon: false,
 }
 
 export const navbarSlice = createSlice({
@@ -30,6 +31,12 @@ export const navbarSlice = createSlice({
 		},
 		neutralUser: (state) => {
 			state.isLoggedin = null
+		},
+		showBackIcon: (state) => {
+			state.backIcon = true
+		},
+		removeBackIcon: (state) => {
+			state.backIcon = false
 		}
 	},
 })
@@ -37,6 +44,7 @@ export const navbarSlice = createSlice({
 export const {
 	setShow, removeShow,
 	setnavbar, removenavbar,
-	setLogIn,setLogout,neutralUser} = navbarSlice.actions
+	setLogIn,setLogout,neutralUser,
+	showBackIcon, removeBackIcon} = navbarSlice.actions
 
 export default navbarSlice.reducer

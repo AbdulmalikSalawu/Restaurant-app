@@ -4,7 +4,7 @@ import mainfood from '../Assets/mainmeal.png'
 import WhyChoose from './WhyChoose'
 // import Nav from './Nav'
 import { useDispatch, useSelector } from 'react-redux';
-import {setLogout,removenavbar} from '../features/navbarSlice'
+import {setLogout,removenavbar, removeBackIcon} from '../features/navbarSlice'
 import About from './About'
 import OurDishes from './OurDishes'
 import { useNavigate } from 'react-router';
@@ -16,6 +16,7 @@ function Home() {
     useEffect(() => {
       dispatch(setLogout())
       dispatch(removenavbar())
+      dispatch(removeBackIcon())
     }, [])
     
   const orderNow = () => {

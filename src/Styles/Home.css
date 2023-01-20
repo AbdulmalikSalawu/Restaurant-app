@@ -11,7 +11,7 @@ h1{
     --marginleft: 5rem;
 }
 .ord{
-    color: var(--buttonColor);
+    color: var(--buttonColor) !important;
 }
 /* .mainfood{
     margin-top: 4.5rem;

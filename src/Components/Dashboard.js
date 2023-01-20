@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 // import Nav2 from './Nav2';
 import Main from './Main'
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogIn,removenavbar } from '../features/navbarSlice'
+import { setLogIn,removenavbar, removeBackIcon } from '../features/navbarSlice'
 
 function Dashboard() {
 
@@ -14,6 +14,7 @@ function Dashboard() {
   const dispatch = useDispatch()
     useEffect(() => {
       dispatch(removenavbar())
+      dispatch(removeBackIcon())
     }, [])
 
     const [myUser, setMyUser] = useState({})

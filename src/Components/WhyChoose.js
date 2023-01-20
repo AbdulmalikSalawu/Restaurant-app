@@ -4,12 +4,16 @@ import card1 from '../Assets/cardimg6.png';
 import card2 from '../Assets/cardimg4.png';
 import card3 from '../Assets/cardimg2.png'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { setnavbar, setShow } from '../features/navbarSlice';
+import arrow from '../Assets/arrow-left.svg'
 
 function WhyChoose() {
     // const showNav2 = useSelector((state) => state.navbar.navbar)
     const showNav = useSelector((state) => state.navbar.show)
-    const dispatch = useDispatch()
+    const backIcon = useSelector((state) => state.navbar.backIcon)
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(setnavbar())
@@ -21,7 +25,8 @@ function WhyChoose() {
         {/* {showNav2? (<Nav />): ""} */}
         {showNav? (
         <div>
-            <div className='text-center mt-5'>
+             {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
+            <div className='text-center mt-1'>
                 <h2 className='fs-1'>Why Choose Us</h2>
                 <div className='fs-5'>These are what makes our delicacies different</div>
             </div>

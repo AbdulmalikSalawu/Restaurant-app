@@ -1,7 +1,3 @@
-.cartBody{
-    /* background-color: #fbf8f7; */
-    height: 100vh;
-}
 h3,.cartItemName{
     color: #ff4d00 !important;
 }
@@ -10,6 +6,8 @@ h3,.cartItemName{
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 8px 5px -2px !important;
     max-height: 23.5rem;
+    padding: 2rem;
+    padding-bottom: 0rem !important;
 }
 span{
     color: black !important;
@@ -30,8 +28,6 @@ span{
     border-radius: 10px;
 }
 .cartQty{
-    position: relative;
-    top: -1.8rem;
     width: 10rem;
     overflow-y: hidden;
 }
@@ -94,9 +90,12 @@ hr{
     .cart-container{
         /* width: 100%; */
         border-radius: 5px;
-        max-height: 34rem;
+        max-height: 31.5rem;
         background: none !important;
         box-shadow: 0px !important;
+        position: relative;
+        top: -2rem;
+        
     }
     .cartItemName{
         width: 12rem;
@@ -107,9 +106,9 @@ hr{
     .cart-body{
         margin: auto;
         width: 98%;
-        height: 7.2rem;
+        height: 7.3rem;
         overflow-y: hidden !important;
-        background-color: #fbf8f7;
+        background-color: #f0ebe9;
         border-radius: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
@@ -191,6 +190,15 @@ hr{
         left: 14rem;
         bottom: -0.3rem;
         width: 7rem;
+    }
+    .cartQty{
+        position: relative;
+        top: -0.1rem;
+    }
+    .cartInp{
+        position: relative;
+        top: -3.7rem;
+        left: 2rem;
     }
 }
 @media screen and (max-width: 600px) {

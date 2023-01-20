@@ -10,7 +10,7 @@ import cart from '../Assets/cart2.svg';
 import person from '../Assets/person.svg';
 import '../Styles/Nav.css'
 import {useDispatch,useSelector} from 'react-redux'
-import {setShow, removeShow,setnavbar,removenavbar} from '../features/navbarSlice'
+import {setShow, removeShow,setnavbar,removenavbar, showBackIcon} from '../features/navbarSlice'
 
 function Nav2() {
 
@@ -48,6 +48,7 @@ function Nav2() {
   const toggle2 = () => {
     dispatch(setShow())
     dispatch(setnavbar())
+    dispatch(showBackIcon())
   }
   const toggle3 = () => {
     dispatch(setShow())
@@ -55,6 +56,7 @@ function Nav2() {
 }
     const goToCart = () => {
         navigate('/carts')
+        dispatch(showBackIcon())
     }
 
   return (

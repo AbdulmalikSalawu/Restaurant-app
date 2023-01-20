@@ -9,6 +9,7 @@ function AddFile() {
     const [itemPrice, setItemPrice] = useState("")
     const [itemFile, setItemFile] = useState([])
     const [percentage, setPercentage] = useState("")
+    // const [myUser, setMyUser] = useState({})
 
     let itemId = 0;
     let itemDb = ref(db, "items");

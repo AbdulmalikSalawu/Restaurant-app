@@ -14,6 +14,7 @@ function Signup() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [firebaseError, setFirebaseError] = useState("")
+    const [myUser, setMyUser] = useState({})
 
     useEffect(() => {
       dispatch(neutralUser())
@@ -40,7 +41,7 @@ function Signup() {
         await createUserWithEmailAndPassword(auth, values.email, values.password, values.phoneNumber, values.username)
         .then((credentials)=> {
             let user_id = credentials.user.uid
-            let userObj = {email:values.email, phoneNumber:values.phoneNumber, username:values.username};
+            let userObj = {email:values.email, phoneNumber:values.phoneNumber, username:values.username,user_id};
             let dbRef = ref (db, `users/${userId}`)
             set (dbRef, userObj);
             console.log(user_id);

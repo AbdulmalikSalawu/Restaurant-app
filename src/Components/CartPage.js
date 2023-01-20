@@ -1,20 +1,53 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router';
+import {ref, onValue} from 'firebase/database';
 import '../Styles/cart.css'
 import carti from '../Assets/cart2.svg';
 import plus from '../Assets/plus-square.svg'
 import dash from '../Assets/dash-square.svg'
+import {auth,db} from '../Schemas/firebase-config'
 import { setLogIn } from '../features/navbarSlice';
 import { decreaseQuantity, increaseQuantity, removeFromCart } from '../features/cartSlice';
+import arrow from '../Assets/arrow-left.svg'
+import { onAuthStateChanged } from 'firebase/auth';
 
 function CartPage() {
 
+    const [myUser, setMyUser] = useState({})
     const cart = useSelector((state) => state.cart)
     const showNav = useSelector((state) => state.navbar.show)
+    const backIcon = useSelector((state) => state.navbar.backIcon)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
       dispatch(setLogIn())
     }, [])
+
+    let orderId = 0;
+    let orderDb = ref(db, "orders");
+    let orderArray = [];
+        onValue(orderDb, (snapshot)=> {
+        orderArray = snapshot.val();
+            if (orderArray) {
+                orderId = orderArray.length
+            }
+            else {
+                orderId = 0;
+            }
+        })
+
+    useEffect(() => {
+      onAuthStateChanged(auth, (user)=> {
+        if (user){
+          setMyUser(user)
+          cart.cartItems = orderArray.filter(each => each.uniqueId == myUser.uid)
+            }
+            else {
+              navigate("/login")
+           }
+       });
+      }, [])
 
     const removeCartItem = (myCart) => {
         dispatch(removeFromCart(myCart))
@@ -37,10 +70,12 @@ function CartPage() {
                 <p>Your cart is currently empty</p>
                 ) : (
                   <div>
-                <h3 className='text-center mb-5 mt-3 fw-bold'>Your Cart<span><img className='cartIcon2 ms-2' src={carti} alt='cart icon'></img></span></h3>
-                  <div className='cart-container px-2 py-3 mb-5 col-sm-10 col-md-10 col-lg-8 d-block m-auto mt-1 shadow'>
+                    {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
+                   
+                <h3 className='text-center mb-5 fw-bold'>Your Cart<span><img className='cartIcon2 ms-2' src={carti} alt='cart icon'></img></span></h3>
+                  <div className='cart-container px-2 py- mb-5 col-sm-10 col-md-10 col-lg-8 d-block m-auto mt- shadow'>
                 {
-                cart.cartItems?.map(myCart => (
+                cart.cartItems?.map((myCart) => (
                   <div className='wholeItem'>
                     <div className='cart-body py-2'>
                         <img className='cartImg ms-1 mt-1' src={myCart.imageURL} alt='error' />
@@ -50,7 +85,8 @@ function CartPage() {
                         </div>
                         
                         <div className='cartItemName ms-md-3 ms-lg-5 fw-bold'>{myCart.itemName}</div>
-                        <span className='cartPrice ms-md-3 ms-lg-5 d-md-none'>${myCart.itemPrice*myCart.cartQuantity}</span> 
+                        <span className='cartPrice ms-md-3 ms-lg-5 d-md-      
+                         none'>${myCart.itemPrice*myCart.cartQuantity}</span> 
                         <span className='cartQty ms-md-3 ms-lg-5'><i className='fs-5'>QTY</i><input className='ms-3 cartInp fw-bold fs-3' value={myCart.cartQuantity} type='number' /></span>
                         <span className='cartTotal fw-bold d-none d-md-block'>${myCart.itemPrice*myCart.cartQuantity}</span>
                         <button onClick={() => removeItemLarge(myCart)} className='removeBtn'>Remove</button>

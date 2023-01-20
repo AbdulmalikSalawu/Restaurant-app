@@ -1,25 +1,61 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 // import Nav from './Nav'
-import {ref, onValue} from 'firebase/database';
+import {ref, onValue, set} from 'firebase/database';
 import { useSelector,useDispatch } from 'react-redux';
-import {db} from '../Schemas/firebase-config'
+import {auth, db} from '../Schemas/firebase-config'
 // import Nav2 from './Nav2';
 import { setnavbar,setShow } from '../features/navbarSlice';
 import { addToCart } from '../features/cartSlice';
 import { useNavigate } from 'react-router';
+import arrow from '../Assets/arrow-left.svg'
+import { onAuthStateChanged } from 'firebase/auth';
 
 function OurDishes() {
 //   const showNav2 = useSelector((state) => state.navbar.navbar)
 //   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
+  const [myUser, setMyUser] = useState({})
   const showNav = useSelector((state) => state.navbar.show)
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
+  const backIcon = useSelector((state) => state.navbar.backIcon)
   const myCart = useSelector((state) => state.cart.cartItems)
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user)=> {
+      if (user){
+        setMyUser(user)
+          }
+          else {
+            navigate("/login")
+         }
+     });
+    }, [])
+
+  let orderId = 0;
+  let orderDb = ref(db, "orders");
+  let orderArray = [];
+      onValue(orderDb, (snapshot)=> {
+      orderArray = snapshot.val();
+          if (orderArray) {
+            orderId = orderArray.length
+          }
+          else {
+            orderId = 0;
+          }
+      })
+
   const handleAddToCart = (item) => {
     if(isLoggedin===true){    
       dispatch(addToCart(item));
+      let orderObj = {
+        imageURL:item.imageURL, 
+        itemName: item.itemName, 
+        itemPrice:item.itemPrice,
+        uniqueId: myUser?.uid
+      }
+      let dbRef = ref (db, `orders/${itemId}`)
+      set(dbRef, orderObj);
     } else {
       navigate('/login')
     }
@@ -42,12 +78,13 @@ function OurDishes() {
             else {
                 itemId = 0;
             }
-        })    
+        })   
 
   return (
     <div>
        {/* {showNav2 && isLoggedin===true ? (<Nav2 />) : showNav2 && isLoggedin===false ? (<Nav />):  ""} */}
-       <h2 className='fs-1 text-center mt-5'>Our daily dishes</h2>
+       {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
+       <h2 className='fs-1 text-center mt-1'>Our daily dishes</h2>
        <p className='text-center'>Check out various delicacies of your choice</p>
       {showNav ? (
           <div>
