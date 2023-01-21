@@ -11,37 +11,30 @@ import { setLogIn } from '../features/navbarSlice';
 import { decreaseQuantity, increaseQuantity, removeFromCart } from '../features/cartSlice';
 import arrow from '../Assets/arrow-left.svg'
 import { onAuthStateChanged } from 'firebase/auth';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function CartPage() {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
 
     const [myUser, setMyUser] = useState({})
     const cart = useSelector((state) => state.cart)
     const showNav = useSelector((state) => state.navbar.show)
     const backIcon = useSelector((state) => state.navbar.backIcon)
+    // const [uniqueCart, setUniqueCart] = useState(cart.cartItems)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
       dispatch(setLogIn())
     }, [])
 
-    let orderId = 0;
-    let orderDb = ref(db, "orders");
-    let orderArray = [];
-        onValue(orderDb, (snapshot)=> {
-        orderArray = snapshot.val();
-            if (orderArray) {
-                orderId = orderArray.length
-            }
-            else {
-                orderId = 0;
-            }
-        })
-
     useEffect(() => {
       onAuthStateChanged(auth, (user)=> {
         if (user){
           setMyUser(user)
-          cart.cartItems = orderArray.filter(each => each.uniqueId == myUser.uid)
             }
             else {
               navigate("/login")
@@ -49,6 +42,28 @@ function CartPage() {
        });
       }, [])
 
+      // const showCart = (orderArray) => {
+      //   console.log(orderArray.itemName)
+      // }
+
+      let orderId = 0;
+      let orderDb = ref(db, "orders");
+      let orderArray = [];
+          onValue(orderDb, (snapshot)=> {
+          orderArray = snapshot.val();
+              if (orderArray) {
+                orderId = orderArray.length
+                // showCart(orderArray)
+              }
+              else {
+                orderId = 0;
+              }
+          })
+      
+    const makeOrder = (myCart) => {
+       setShow(true)
+       dispatch(removeFromCart(myCart))
+    }
     const removeCartItem = (myCart) => {
         dispatch(removeFromCart(myCart))
     }
@@ -67,10 +82,13 @@ function CartPage() {
       {showNav ? (
           <div className='cartBody'>
             {cart.cartItems.length === 0 ? (
-                <p>Your cart is currently empty</p>
+              <div className='d-block m-auto'>
+                  <p className='text-center mt-5 fs-3'>Your cart is currently empty</p>
+                  <p className='text-center mt-5'><img src={arrow} onClick={()=>navigate('/ourdishes')} className='me-3 col-1 mt-1' alt='back' />Start Shopping</p>
+                </div>
                 ) : (
                   <div>
-                    {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
+                    {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}         
                    
                 <h3 className='text-center mb-5 fw-bold'>Your Cart<span><img className='cartIcon2 ms-2' src={carti} alt='cart icon'></img></span></h3>
                   <div className='cart-container px-2 py- mb-5 col-sm-10 col-md-10 col-lg-8 d-block m-auto mt- shadow'>
@@ -85,16 +103,17 @@ function CartPage() {
                         </div>
                         
                         <div className='cartItemName ms-md-3 ms-lg-5 fw-bold'>{myCart.itemName}</div>
-                        <span className='cartPrice ms-md-3 ms-lg-5 d-md-      
+                        <span className='cartPrice lg-hidden ms-md-3 ms-lg-5 d-md-      
                          none'>${myCart.itemPrice*myCart.cartQuantity}</span> 
                         <span className='cartQty ms-md-3 ms-lg-5'><i className='fs-5'>QTY</i><input className='ms-3 cartInp fw-bold fs-3' value={myCart.cartQuantity} type='number' /></span>
                         <span className='cartTotal fw-bold d-none d-md-block'>${myCart.itemPrice*myCart.cartQuantity}</span>
                         <button onClick={() => removeItemLarge(myCart)} className='removeBtn'>Remove</button>
+                        <button className='d-sm-none d-md-block makeOrder text-white ms-1' onClick={()=>makeOrder(myCart)}>Order</button>
                         <hr/>
                     </div>
                     <div className='optionBtns d-md-none d-block m-auto text-center'>
                           <button onClick={() => removeCartItem(myCart)} className='deleteFood px-2 py-1 mt-2'>Remove</button>
-                          <button className='orderFood px-3 py-1'>Order</button>
+                          <button type='button' data-toggle="modal" data-target="#exampleModal" onClick={()=>makeOrder(myCart)} className='orderFood px-3 py-1'>Order</button>
                     </div>
                     <hr className='d-sm-none d-md-block' />
                   </div>
@@ -102,10 +121,28 @@ function CartPage() {
                 }</div>
               </div>
               )}
-              <button className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
-              <button className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button>
+              {cart.cartItems.length===0 ? (
+                ""
+              ) : (
+                <span className='btn-contain'>
+                  <button className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
+                  <button className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button>
+                </span>
+               )}
       </div>
       ) : ""}
+
+    <Modal show={show} onHide={handleClose} className='mt-5 py-5'>
+      <Modal.Body><h2>Your Order is successful! 🙂</h2></Modal.Body>
+        <Modal.Footer>
+          <Button className='modalClose py-2' onClick={handleClose}>
+            Close
+          </Button>
+          <Button className='modalSave text-white py-2'  onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+    </Modal>
     </div>
   )
 }

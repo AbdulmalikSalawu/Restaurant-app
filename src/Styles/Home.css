@@ -13,6 +13,9 @@ h1{
 .ord{
     color: var(--buttonColor) !important;
 }
+.col-1{
+    width: 2rem;
+}
 /* .mainfood{
     margin-top: 4.5rem;
     height: 25rem;

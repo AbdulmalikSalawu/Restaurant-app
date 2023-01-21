@@ -29,7 +29,7 @@ const cartSlice = createSlice({
             state.cartItems = nextCartItems;
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
 
-            alert(`${action.payload.itemName} removed from cart `)
+            // alert(`${action.payload.itemName} removed from cart `)
         },
 
         increaseQuantity(state, action){

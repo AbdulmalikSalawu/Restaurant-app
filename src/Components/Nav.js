@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import '../Styles/Nav.css'
 import {useDispatch} from 'react-redux'
-import {setShow, removeShow,setnavbar,removenavbar} from '../features/navbarSlice'
+import {setShow, removeShow,setnavbar,removenavbar,showBackIcon} from '../features/navbarSlice'
 
 function Nav() {
     const navRef = useRef();
@@ -28,6 +28,7 @@ function Nav() {
       const toggle2 = () => {
         dispatch(setShow());
         dispatch(setnavbar())
+        dispatch(showBackIcon())
     }
       const toggle3 = () => {
         dispatch(setShow())

@@ -54,7 +54,7 @@ function OurDishes() {
         itemPrice:item.itemPrice,
         uniqueId: myUser?.uid
       }
-      let dbRef = ref (db, `orders/${itemId}`)
+      let dbRef = ref (db, `orders/${orderId}`)
       set(dbRef, orderObj);
     } else {
       navigate('/login')
