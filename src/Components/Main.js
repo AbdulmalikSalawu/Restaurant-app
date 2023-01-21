@@ -5,11 +5,15 @@ import WhyChoose from './WhyChoose'
 import About from './About'
 import OurDishes from './OurDishes'
 import { useNavigate } from 'react-router'
+import { showBackIcon } from '../features/navbarSlice'
+import { useDispatch } from 'react-redux'
 
 function Main() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const order = () => {
-      navigate('/ourdishes')
+    dispatch(showBackIcon())
+    navigate('/ourdishes')
   }
 
   return (

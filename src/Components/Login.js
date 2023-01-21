@@ -6,12 +6,14 @@ import {auth} from '../Schemas/firebase-config'
 import { useNavigate } from 'react-router-dom';
 import {neutralUser,setShow} from '../features/navbarSlice'
 import '../Styles/Signup.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import arrow from '../Assets/arrow-left.svg'
 
 function Login() {
 
     const navigate=useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const backIcon = useSelector((state) => state.navbar.backIcon)
     const [firebaseError, setFirebaseError] = useState("")
 
     useEffect(() => {
@@ -47,6 +49,7 @@ function Login() {
 
   return (
     <div className='signupbody'>
+       {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}  
       <div className='inputcont2 col-lg-4 mt-5  text-center pt-4 pb-3'>
       <div className='mt-4 fs-4 fw-bold text-black'><span>Welcome</span> Back</div>
 

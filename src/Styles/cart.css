@@ -97,6 +97,10 @@ hr{
     border: none;
 }
 .modalSave:hover{background-color: #4e1a02;}
+.checkIcon{
+    width: 6rem;
+    height: 10rem;
+}
 
 @media screen and (max-width: 800px) {
     .cartImg{
@@ -204,6 +208,10 @@ hr{
     .lg-hidden{
         display: none;
         visibility: hidden;
+    }
+    .checkIcon{
+        width: 6rem;
+        height: 4rem;
     }
 }
 @media screen and (min-width: 1250px) {

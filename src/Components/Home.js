@@ -4,7 +4,7 @@ import mainfood from '../Assets/mainmeal.png'
 import WhyChoose from './WhyChoose'
 // import Nav from './Nav'
 import { useDispatch, useSelector } from 'react-redux';
-import {setLogout,removenavbar, removeBackIcon} from '../features/navbarSlice'
+import {setLogout,removenavbar, removeBackIcon, showBackIcon} from '../features/navbarSlice'
 import About from './About'
 import OurDishes from './OurDishes'
 import { useNavigate } from 'react-router';
@@ -20,11 +20,12 @@ function Home() {
     }, [])
     
   const orderNow = () => {
-      navigate('/ourdishes')
+    dispatch(showBackIcon())
+    navigate('/ourdishes')
   }
 
   return (
-    <div>
+    <div className='mt-5 pt-3'>
       {/* <Nav /> */}
       {showNav ? (
         <div>

@@ -16,6 +16,10 @@ header{
     justify-content: space-between;
     height: 69px;
     background-color: var(--mainColorLight) !important;
+    overflow: hidden !important;
+    position: fixed !important;
+    z-index: 1;
+    width: 100%;
     color: var(--textColor);
 }
 nav{
@@ -107,7 +111,7 @@ header .nav-btn {
     font-size: 1.5rem;
 }
 .cartBtn:hover{
-    background-color: #f85814;
+    background-color: #edb49c;
 }
 .fs-7{
     font-size: 1.15rem !important;

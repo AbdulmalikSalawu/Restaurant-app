@@ -81,7 +81,7 @@ function OurDishes() {
         })   
 
   return (
-    <div>
+    <div className='mt-5 pt-3'>
        {/* {showNav2 && isLoggedin===true ? (<Nav2 />) : showNav2 && isLoggedin===false ? (<Nav />):  ""} */}
        {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
        <h2 className='fs-1 text-center mt-1'>Our daily dishes</h2>

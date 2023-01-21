@@ -6,13 +6,14 @@ import '../Styles/cart.css'
 import carti from '../Assets/cart2.svg';
 import plus from '../Assets/plus-square.svg'
 import dash from '../Assets/dash-square.svg'
-import {auth,db} from '../Schemas/firebase-config'
+import checkIcon from '../Assets/check.svg'
 import { setLogIn } from '../features/navbarSlice';
 import { decreaseQuantity, increaseQuantity, removeFromCart } from '../features/cartSlice';
 import arrow from '../Assets/arrow-left.svg'
 import { onAuthStateChanged } from 'firebase/auth';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { auth, db } from '../Schemas/firebase-config';
 
 function CartPage() {
 
@@ -42,18 +43,15 @@ function CartPage() {
        });
       }, [])
 
-      // const showCart = (orderArray) => {
-      //   console.log(orderArray.itemName)
-      // }
-
       let orderId = 0;
+
       let orderDb = ref(db, "orders");
       let orderArray = [];
           onValue(orderDb, (snapshot)=> {
           orderArray = snapshot.val();
               if (orderArray) {
                 orderId = orderArray.length
-                // showCart(orderArray)
+                // cart.cartItems = orderArray.filter(each => each.uniqueId == myUser.uid)
               }
               else {
                 orderId = 0;
@@ -78,12 +76,12 @@ function CartPage() {
     }
 
   return (
-    <div>
+    <div className='mt-5 pt-3'>
       {showNav ? (
           <div className='cartBody'>
             {cart.cartItems.length === 0 ? (
               <div className='d-block m-auto'>
-                  <p className='text-center mt-5 fs-3'>Your cart is currently empty</p>
+                  <p className='text-center mt-5 fs-3 fw-bold'>Your cart is currently empty</p>
                   <p className='text-center mt-5'><img src={arrow} onClick={()=>navigate('/ourdishes')} className='me-3 col-1 mt-1' alt='back' />Start Shopping</p>
                 </div>
                 ) : (
@@ -133,13 +131,13 @@ function CartPage() {
       ) : ""}
 
     <Modal show={show} onHide={handleClose} className='mt-5 py-5'>
-      <Modal.Body><h2>Your Order is successful! 🙂</h2></Modal.Body>
+      <Modal.Body>
+        <img src={checkIcon} alt='success' className='d-block m-auto checkIcon' />
+        <h2 className='text-center mt-5 text-black'>Your Order is successful! 🙂</h2>
+        </Modal.Body>
         <Modal.Footer>
-          <Button className='modalClose py-2' onClick={handleClose}>
-            Close
-          </Button>
-          <Button className='modalSave text-white py-2'  onClick={handleClose}>
-            Save Changes
+          <Button className='modalSave text-white py-2 px-5 d-block m-auto text-center fs-5'  onClick={handleClose}>
+           Close
           </Button>
         </Modal.Footer>
     </Modal>

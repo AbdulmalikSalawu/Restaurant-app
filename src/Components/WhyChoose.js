@@ -21,7 +21,7 @@ function WhyChoose() {
       }, [])
 
   return (
-    <div>
+    <div className='mt-5 pt-2'>
         {/* {showNav2? (<Nav />): ""} */}
         {showNav? (
         <div>

@@ -17,10 +17,12 @@ function Nav() {
         navRef.current.classList.toggle("responsive_nav")
     }
     const register = () => {
-        navigate('/signup')
+        navigate('/signup');
+        dispatch(showBackIcon())
     }
     const login = () => {
         navigate('/login')
+        dispatch(showBackIcon())
     }
     const toggle = () => {
         dispatch(removeShow())

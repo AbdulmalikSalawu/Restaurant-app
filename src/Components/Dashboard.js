@@ -37,9 +37,9 @@ function Dashboard() {
       }, [])
 
   return (
-    <div>
+    <div className='mt-5'>
       {/* <Nav2 /> */}
-      <h3 className='text-center mt-3'>Hi, {myUser?.email}</h3>
+      <h3 className='text-center mt-5'>Hi, {myUser?.email}</h3>
       {/* <h3 className='text-center mt-3'>Hi, {myUser?.email.replace("@gmail.com", "").toUpperCase()} 😃</h3> */}
       {showNav ? (<Main />) : ""}
     </div>
