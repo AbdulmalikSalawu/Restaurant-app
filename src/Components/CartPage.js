@@ -96,6 +96,7 @@ function CartPage() {
                     {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}         
                    
                 <h3 className='text-center mb-5 fw-bold'>Your Cart<span><img className='cartIcon2 ms-2' src={carti} alt='cart icon'></img></span></h3>
+                
                   <div className='cart-container px-2 py- mb-5 col-sm-10 col-md-10 col-lg-8 d-block m-auto mt- shadow'>
                 {
                 cart.cartItems?.map((myCart) => (

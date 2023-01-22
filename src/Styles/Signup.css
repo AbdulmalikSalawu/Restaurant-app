@@ -86,7 +86,7 @@ span{
    
     ::placeholder{
         color: black;
-        font-weight: bolder;
+        font-weight: light !important;
         font-family: 'Times New Roman', Times, serif;
     }
     input{

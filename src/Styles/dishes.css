@@ -20,3 +20,24 @@
     display: flex;
     justify-content: center;
 }
+.rounded-pill{
+    border: thin solid #eba384;
+    margin: auto;
+}
+.moreBtn{
+    position: relative;
+    top: -4rem;
+    background-color: white;
+    border: thin solid #ff4d00;
+    color: #ff4d00;
+    font-size: 1.2rem;
+}
+.moreBtn:hover{
+    background-color: #ff4d00;
+    color: white;
+    border: none;
+}
+@media screen and (max-width:600px){
+    .rounded-pill{width: 82%;}
+    .moreBtn{width: 60%;}
+}

@@ -13,6 +13,7 @@ import Nav from './Components/Nav';
 import Nav2 from './Components/Nav2';
 import { useSelector } from 'react-redux';
 import CartPage from './Components/CartPage';
+import Dishes from './Components/alldishes';
 
 function App() {
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
@@ -29,6 +30,7 @@ function App() {
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='addfile' element={<AddFile />} />
           <Route path='carts' element={<CartPage />} />
+          <Route path='alldishes' element={<Dishes />} />
           <Route path='*' element={<NoMatch />} />
       </Routes>
     </div>

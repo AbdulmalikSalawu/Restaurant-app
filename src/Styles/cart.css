@@ -189,8 +189,10 @@ hr{
     }
     .qtyBtns{
         width: 3rem;
+        margin-left: 1rem !important;
     }
     .makeOrder{display: none;}
+    
 }
 @media screen and (min-width: 801px) and (max-width: 899px) {
     .cartTotal{
@@ -269,6 +271,6 @@ hr{
     }
     .qtyBtns{
         position: relative;
-        left: -1.5rem;
+        left: -0.5rem;
     }
 }

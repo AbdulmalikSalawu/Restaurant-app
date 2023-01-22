@@ -10,12 +10,10 @@ import { useNavigate } from 'react-router';
 import arrow from '../Assets/arrow-left.svg'
 import { onAuthStateChanged } from 'firebase/auth';
 
-function OurDishes() {
+function Dishes() {
 //   const showNav2 = useSelector((state) => state.navbar.navbar)
 //   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
-  const [names, setNames] = useState("ade")
-  // const [nameArray, setNameArray] = useState(["Wale", "Bola", "Segun", "Nihmot", "Muhammad", "Titilayo", "Faridah", "Makinde"])
-  const [newNames, setNewNames] = useState(["ade","bola"])
+  
   const [myUser, setMyUser] = useState({})
   const showNav = useSelector((state) => state.navbar.show)
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
@@ -82,32 +80,16 @@ function OurDishes() {
                 itemId = 0;
             }
         })  
-      
-    //   const showString = () => {
-    //    setNewNames(nameArray.filter(newList => newList.includes(names)))
-    // }
-      const showString = () => {
-        console.log("working")
-      //  setNewNames(itemArray.filter(newList => newList.includes(names)))
-    }
-    const moreBtn = () => {
-        navigate('/alldishes')
-    }
-
 
   return (
     <div className='mt-5 pt-3'>
-       {/* {showNav2 && isLoggedin===true ? (<Nav2 />) : showNav2 && isLoggedin===false ? (<Nav />):  ""} */}
        {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}
        <h2 className='fs-1 text-center mt-1'>Our daily dishes</h2>
        <p className='text-center pe-3'>Check out various delicacies of your choice</p>
       {showNav ? (
           <div>
-
-            <input className='col-sm-10 col-md-6 col-lg-2 pe-3 rounded-pill d-block m-auto text-center' onChange={e=> setNames(e.target.value)} onInput={showString} placeholder='search food' />
-            
           {
-          itemArray.filter((item,index)=>index>0&&index<5).map((item, index) => (
+          itemArray.map((item, index) => (
           <div key={index}>
             <div className='container mt-5 mb-5 py-5 px-5'>
                 <div className='row'>
@@ -125,11 +107,10 @@ function OurDishes() {
             </div>
           </div>
           ))}
-          <button onClick={moreBtn} className='btn moreBtn px-2 py-2 d-block m-auto mb-5'>More</button>
           </div>
       ) : ""}
     </div>
   )
 }
 
-export default OurDishes
+export default Dishes
