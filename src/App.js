@@ -20,7 +20,7 @@ function App() {
     <div>
       {isLoggedin===true ? (<Nav2 />) : isLoggedin===false ? (<Nav />):  ""}
         <Routes>
-          <Route path='/' element={isLoggedin ? <Dashboard /> : <Home />}></Route>
+          <Route path='/' element={<Home />}></Route>
           <Route path='/whychoose' element={<WhyChoose />}></Route>
           <Route path='about' element={<About />} />
           <Route path='ourdishes' element={<OurDishes />} />

@@ -49,7 +49,7 @@ function Login() {
 
   return (
     <div className='signupbody'>
-       {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1' alt='back' />) : ""}  
+       {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1 bg-white rounded-pill px-1 py-1' alt='back' />) : ""}  
       <div className='inputcont2 col-lg-4 mt-5  text-center pt-4 pb-3'>
       <div className='mt-4 fs-4 fw-bold text-black'><span>Welcome</span> Back</div>
 

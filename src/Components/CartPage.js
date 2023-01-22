@@ -8,7 +8,7 @@ import plus from '../Assets/plus-square.svg'
 import dash from '../Assets/dash-square.svg'
 import checkIcon from '../Assets/check.svg'
 import { setLogIn } from '../features/navbarSlice';
-import { decreaseQuantity, increaseQuantity, removeFromCart } from '../features/cartSlice';
+import { decreaseQuantity, increaseQuantity, purchaseAll, removeAllItems, removeFromCart } from '../features/cartSlice';
 import arrow from '../Assets/arrow-left.svg'
 import { onAuthStateChanged } from 'firebase/auth';
 import Button from 'react-bootstrap/Button';
@@ -74,6 +74,13 @@ function CartPage() {
     const decreaseItem = (myCart) => {
       dispatch(decreaseQuantity(myCart))
     }
+    const removeAll = () => {
+      dispatch(removeAllItems())
+    }
+    const buyAll = () => {
+      setShow(true)
+      dispatch(purchaseAll())
+    }
 
   return (
     <div className='mt-5 pt-3'>
@@ -122,9 +129,10 @@ function CartPage() {
               {cart.cartItems.length===0 ? (
                 ""
               ) : (
+                
                 <span className='btn-contain'>
-                  <button className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
-                  <button className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button>
+                  <button onClick={removeAll} className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
+                  <button onClick={buyAll} className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button>
                 </span>
                )}
       </div>

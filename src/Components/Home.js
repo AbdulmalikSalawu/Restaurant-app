@@ -32,7 +32,7 @@ function Home() {
           <div className='row '>
             <div className='col-sm-12 col-md-10 col-lg-7'>
               <h1>Cooking gone wrong?, <span className='ord'>Order food </span>you <span className='ord'> love</span> delivered now!</h1>
-              <p className='pe-lg-5'>Anything, anytime, anywhere, we've got you!. Helping you enjoy confortable and health food on the go</p>
+              <p className='pe-lg-5'>Anything, anytime, anywhere, we've got you!. Helping you enjoy comfortable and healthy food on the go</p>
               <button onClick={orderNow} className='orderButton px-3 py-2 fs-5'>Order now</button>
             </div>
             <div className='col-lg-5'>
