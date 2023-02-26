@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import CartPage from './Components/CartPage';
 import Dishes from './Components/alldishes';
 import Product from './Components/Product';
+import Homee from './Components/Homee';
 
 function App() {
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
@@ -22,7 +23,7 @@ function App() {
     <div>
       {isLoggedin===true ? (<Nav2 />) : isLoggedin===false ? (<Nav />):  ""}
         <Routes>
-          <Route path='/' element={<Home />}></Route>
+          <Route path='/' element={<Homee />}></Route>
           <Route path='/whychoose' element={<WhyChoose />}></Route>
           <Route path='about' element={<About />} />
           <Route path='ourdishes' element={<OurDishes />} />
