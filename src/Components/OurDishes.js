@@ -5,17 +5,18 @@ import { useSelector,useDispatch } from 'react-redux';
 import {auth, db} from '../Schemas/firebase-config'
 // import Nav2 from './Nav2';
 import { setnavbar,setShow } from '../features/navbarSlice';
-import { addToCart } from '../features/cartSlice';
+import { addToCart,viewMore } from '../features/cartSlice';
 import { useNavigate } from 'react-router';
 import arrow from '../Assets/arrow-left.svg'
 import { onAuthStateChanged } from 'firebase/auth';
+import '../Styles/dishes.css'
 
 function OurDishes() {
 //   const showNav2 = useSelector((state) => state.navbar.navbar)
 //   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
-  const [names, setNames] = useState("ade")
-  // const [nameArray, setNameArray] = useState(["Wale", "Bola", "Segun", "Nihmot", "Muhammad", "Titilayo", "Faridah", "Makinde"])
-  const [newNames, setNewNames] = useState(["ade","bola"])
+  const [names, setNames] = useState("")
+  const [newNames, setNewNames] = useState([])
+  // const [searchState,setSearchState] = useState(true)
   const [myUser, setMyUser] = useState({})
   const showNav = useSelector((state) => state.navbar.show)
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
@@ -24,16 +25,19 @@ function OurDishes() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user)=> {
-      if (user){
-        setMyUser(user)
-          }
-          else {
-            navigate("/login")
-         }
-     });
-    }, [])
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user)=> {
+  //     if (user){
+  //       setMyUser(user)
+  //         }
+  //         else {
+  //           navigate("/login")
+  //        }
+  //    });
+  //   }, [])
+    // useEffect(() => {
+    //     setSearchState(false)
+    // })
 
   let orderId = 0;
   let orderDb = ref(db, "orders");
@@ -63,6 +67,10 @@ function OurDishes() {
       navigate('/login')
     }
 };
+  // const handleMoreInfo = (item) => {
+  //     dispatch(viewMore(item))
+  //     navigate('/productPage')
+  // }
 
   useEffect(() => {
       dispatch(setnavbar())
@@ -81,19 +89,21 @@ function OurDishes() {
             else {
                 itemId = 0;
             }
-        })  
+        }) 
+        
+        // if(names==""){
+        //   setSearchState(false)
+        // } else {setSearchState(true)}
       
-    //   const showString = () => {
-    //    setNewNames(nameArray.filter(newList => newList.includes(names)))
-    // }
-      const showString = () => {
-        console.log("working")
-      //  setNewNames(itemArray.filter(newList => newList.includes(names)))
+      const showString = (e) => {
+        setNames(e.target.value)
+        setNewNames(itemArray.filter((item) => {
+          return Object.values(item.itemName).join('').toLowerCase().includes(names.toLowerCase())
+          }))
     }
     const moreBtn = () => {
         navigate('/alldishes')
     }
-
 
   return (
     <div className='mt-5 pt-3'>
@@ -104,28 +114,55 @@ function OurDishes() {
       {showNav ? (
           <div>
 
-            <input className='col-sm-10 col-md-6 col-lg-2 pe-3 rounded-pill d-block m-auto text-center' onChange={e=> setNames(e.target.value)} onInput={showString} placeholder='search food' />
-            
-          {
-          itemArray.filter((item,index)=>index>0&&index<5).map((item, index) => (
+            <input className='col-sm-10 col-md-6 col-lg-2 pe-3 rounded-pill d-block m-auto text-center' onChange={showString} placeholder='search food' />
+
+          {names!==""? (
+          newNames.map((item, index) => (
           <div key={index}>
             <div className='container mt-5 mb-5 py-5 px-5'>
                 <div className='row'>
                     <div className='cardcontainer'>
                         <div key={item.index} className="card col-md-4 col-lg-3 ms-md-2 ms-lg-3 shadow">
-                            <img className="card-img-top" src={item.imageURL}alt="Card image cap" />
+                            <img className="card-img-top" src={item.imageURL}alt="loading" />
                             <div className="card-body">
                                 <h5 className="card-title text-center fw-bold">{item.itemName}</h5>
                                 <p className="card-text text-center">${item.itemPrice}</p>
                             </div>
+                            {/* <button className='btn px-2 py-2 mb-3 detailsBtn w-75 m-auto' onClick={()=>handleMoreInfo(item)}>Details</button> */}
                             <button onClick={() => handleAddToCart(item)} className='signupbtn w-75 m-auto mb-3'>{isLoggedin ? "Add to cart" : "Order"}</button>
                         </div>
                     </div>
                 </div>
             </div>
           </div>
-          ))}
-          <button onClick={moreBtn} className='btn moreBtn px-2 py-2 d-block m-auto mb-5'>More</button>
+          ))
+          ) : names=="" ? (
+            <div>
+            {
+              itemArray.filter((item,index)=>index>0&&index<5).map((item, index) => (
+              <div key={index} className='mainDiv'>
+                <div className='container conta mt-5 mb-5 py-5 px-5'>
+                    <div className='row'>
+                        <div className='cardcontainer'>
+                            <div key={item.index} className="card col-md-4 col-lg-3 ms-md-2 ms-lg-3 shadow">
+                                <img className="card-img-top" src={item.imageURL}alt="loading" />
+                                <div className="card-body">
+                                    <h5 className="card-title text-center fw-bold">{item.itemName}</h5>
+                                    <p className="card-text text-center">${item.itemPrice}</p>
+                                </div>
+                                {/* <button className='btn px-2 py-2 mb-3 detailsBtn w-75 m-auto' onClick={()=>handleMoreInfo(item)}>Details</button> */}
+                                <button onClick={() => handleAddToCart(item)} className='signupbtn w-75 m-auto mb-3'>{isLoggedin ? "Add to cart" : "Order"}</button>
+                            </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              ))}
+            </div>
+          ) : ""}
+            
+          
+          <button onClick={moreBtn} className='btn moreBtn px-5 py-2 d-block m-auto mb-5'>More</button>
           </div>
       ) : ""}
     </div>

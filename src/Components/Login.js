@@ -4,7 +4,7 @@ import {basicSchema} from '../Schemas/loginSchema';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from '../Schemas/firebase-config'
 import { useNavigate } from 'react-router-dom';
-import {neutralUser,setShow} from '../features/navbarSlice'
+import {neutralUser,setLogout,setShow} from '../features/navbarSlice'
 import '../Styles/Signup.css'
 import { useDispatch, useSelector } from 'react-redux';
 import arrow from '../Assets/arrow-left.svg'
@@ -49,7 +49,7 @@ function Login() {
 
   return (
     <div className='signupbody'>
-       {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1 bg-white rounded-pill px-1 py-1' alt='back' />) : ""}  
+       {backIcon ? ( <img src={arrow} onClick={()=>navigate(-1)} className='ms-3 col-1 mt-1 backIcon bg-white rounded-pill px-1 py-1' alt='back' />) : ""}  
       <div className='inputcont2 col-lg-4 mt-5  text-center pt-4 pb-3'>
       <div className='mt-4 fs-4 fw-bold text-black'><span>Welcome</span> Back</div>
 

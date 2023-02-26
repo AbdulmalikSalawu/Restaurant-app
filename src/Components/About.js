@@ -52,7 +52,37 @@ function About() {
               </div>
             </div>
         </div>
+
+        <h2 className='fs-1 text-center mt-5'>Testimonials</h2>
+        <div className='container mt-5 mb-5 py-5 px-5'>
+                <div className='row'>
+                    <div className='cardcontainer'>
+                    <div class="card col-md-4 col-lg-3 ms-md-2 ms-lg-3 shadow testi">
+                        <div class="card-body">
+                            <h5 class="card-title text-center fw-bold">John Paul</h5>
+                            <p class="card-text text-center">Rivers State</p>
+                            <p class="card-text text-center">Be it a small gathering of friends or a large event with hundreds of people, you'll always be prepared. whether you're at home or on the go.</p>
+                        </div>
+                    </div>
+                    <div class="card col-md-4 col-lg-3 ms-md-2 ms-lg-3 shadow testi">
+                        <div class="card-body">
+                            <h5 class="card-title text-center fw-bold">Chukwudi Vincent</h5>
+                            <p class="card-text text-center">Anambra State</p>
+                            <p class="card-text text-center">No need to worry about any of this anymore with your app. Homely Eats are made with the highest quality ingredients for you and your family.</p>
+                        </div>
+                    </div>
+                    <div class="card col-md-4 col-lg-3 ms-md-2 ms-lg-3 shadow testi">
+                        <div class="card-body">
+                            <h5 class="card-title text-center fw-bold">Balogun Aina</h5>
+                            <p class="card-text text-center">Lagos State</p>
+                            <p class="card-text text-center">With a Homely Eats meal, you can serve delectable, home-cooked meals to your family and friends in any location, anytime. anyday!</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
     </div>
+    
   )
 }
 

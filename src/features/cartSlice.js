@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
+    moreDetails: localStorage.getItem("more-details") ? JSON.parse(localStorage.getItem("more-details")) : [],
     cartTotalQty: 0,
     cartTotalAmt: 0
 }
@@ -21,6 +22,11 @@ const cartSlice = createSlice({
                 alert(`${action.payload.itemName} added to cart 😋`)
             }
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+        },
+        
+        viewMore(state, action){
+                state.moreDetails.push(action.payload)
+                localStorage.setItem("more-details", JSON.stringify(state.moreDetails))
         },
 
         removeFromCart(state, action){
@@ -64,6 +70,8 @@ export const {
     increaseQuantity,
     decreaseQuantity,
     removeAllItems,
-    purchaseAll} = cartSlice.actions;
+    purchaseAll,
+    viewMore
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

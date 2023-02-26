@@ -6,6 +6,21 @@ h1{
     margin-left: var(--marginleft);
     font-size: 3.3rem;
     line-height: 4.5rem;
+    animation-name: slide;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+}
+@keyframes slide {
+    0% {
+        transform: translateX(-30px);
+    }
+    50% {
+        transform: translateX(70px)
+    }
+    /* 75% {
+        transform: translateX(70px);
+    } */
 }
 :root{
     --marginleft: 5rem;
@@ -16,12 +31,6 @@ h1{
 .col-1{
     width: 2rem;
 }
-/* .mainfood{
-    margin-top: 4.5rem;
-    height: 25rem;
-    width: 25rem;
-    border-radius: 50%;
-} */
 p{
     margin-left: var(--marginleft) !important;
     font-size: 1.3rem;

@@ -26,11 +26,15 @@
 }
 .moreBtn{
     position: relative;
-    top: -4rem;
+    top: 2rem;
     background-color: white;
     border: thin solid #ff4d00;
     color: #ff4d00;
     font-size: 1.2rem;
+}
+.detailsBtn{
+    border: thin solid #ff4d00;
+    color: #ff4d00;
 }
 .moreBtn:hover{
     background-color: #ff4d00;

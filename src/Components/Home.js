@@ -8,6 +8,7 @@ import {setLogout,removenavbar, removeBackIcon, showBackIcon} from '../features/
 import About from './About'
 import OurDishes from './OurDishes'
 import { useNavigate } from 'react-router';
+import Footer from './Footer';
 
 function Home() {
   const showNav = useSelector((state) => state.navbar.show)
@@ -46,7 +47,7 @@ function Home() {
                 <p className='partners'>food partners</p>
               </div>
               <div className='col-lg-3 text-center'>
-               <p className='fw-bold fs-2'>500+</p>
+               <p classNname='fw-bold fs-2'>500+</p>
                 <p className='partners'>orders delivered</p>
               </div>
               <div className='col-lg-3 text-center'>
@@ -58,6 +59,7 @@ function Home() {
       <WhyChoose />
       <About />
       <OurDishes />
+      <Footer />
     </div>
       ) : ""}
       

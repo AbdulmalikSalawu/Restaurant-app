@@ -5,6 +5,7 @@
     background-repeat: no-repeat;
     height: 100vh;
 }
+
 .inputcont{
     min-height: 34rem;
 }
@@ -83,7 +84,9 @@ span{
         background-position: center;
         background-repeat: no-repeat;
     } */
-   
+    .backIcon{
+        width: 8% !important;
+    }
     ::placeholder{
         color: black;
         font-weight: light !important;
