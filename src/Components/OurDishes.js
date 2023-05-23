@@ -139,7 +139,7 @@ function OurDishes() {
           ) : names=="" ? (
             <div>
             {
-              itemArray.filter((item,index)=>index>0&&index<5).map((item, index) => (
+              itemArray.filter((item,index)=>index>0&&index<6).map((item, index) => (
               <div key={index} className='mainDiv'>
                 <div className='container conta mt-5 mb-5 py-5 px-5'>
                     <div className='row'>

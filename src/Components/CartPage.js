@@ -82,6 +82,7 @@ function CartPage() {
       dispatch(purchaseAll())
     }
 
+    
   return (
     <div className='mt-5 pt-3'>
       {showNav ? (

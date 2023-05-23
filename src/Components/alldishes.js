@@ -17,7 +17,7 @@ function Dishes() {
   const [myUser, setMyUser] = useState({})
   const showNav = useSelector((state) => state.navbar.show)
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
-  const [names, setNames] = useState("ade")
+  const [names, setNames] = useState("")
   const [newNames, setNewNames] = useState([])
   const backIcon = useSelector((state) => state.navbar.backIcon)
   const myCart = useSelector((state) => state.cart.cartItems)
@@ -105,7 +105,7 @@ function Dishes() {
                 </div>
             </div>
           </div>
-          ))) : names=="" (
+          ))) : names=="" ? (
             <div>
             {
               itemArray.map((item, index) => (
@@ -128,7 +128,7 @@ function Dishes() {
               </div>
               ))}
             </div>
-          )}
+          ) : ""}
           </div>
       ) : ""}
     </div>

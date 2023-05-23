@@ -16,6 +16,7 @@ import CartPage from './Components/CartPage';
 import Dishes from './Components/alldishes';
 import Product from './Components/Product';
 import Homee from './Components/Homee';
+import UserDeets from './Components/userDeets';
 
 function App() {
   const isLoggedin = useSelector((state) => state.navbar.isLoggedin)
@@ -34,6 +35,7 @@ function App() {
           <Route path='carts' element={<CartPage />} />
           <Route path='alldishes' element={<Dishes />} />
           <Route path='productPage' element={<Product />} />
+          <Route path='userdeets' element={<UserDeets />} />
           <Route path='*' element={<NoMatch />} />
       </Routes>
     </div>
