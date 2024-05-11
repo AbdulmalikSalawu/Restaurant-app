@@ -66,13 +66,16 @@ hr{
 }
 .buyAll,.removeAll{
     background-color: #4e1a02;
-    border-radius: 5px;
+    border-radius: 5px !important;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
     font-size: 1.2rem;
     position: relative;
     top: -2rem;
     /* cursor: pointer; */
+}
+.buyAll{
+    height: 6rem !important;
 }
 .removeAll{
     background-color: white;
