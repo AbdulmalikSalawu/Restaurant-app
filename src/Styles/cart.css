@@ -248,7 +248,7 @@ hr{
 }
 @media screen and (max-width:399px) {
     h3{font-size: 1.2rem !important;}
-    .cart-container{max-height: 20rem; width: 100%;}
+    .cart-container{max-height: 27rem !important; width: 100%;}
     .cart-body{width: 20rem; overflow-x: scroll;;}
     .buyAll,.removeAll,.cartPrice{font-size: 0.8rem;}
     .cartInp{

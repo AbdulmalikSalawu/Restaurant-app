@@ -14,6 +14,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { auth, db } from '../Schemas/firebase-config';
+import Checkout from './Checkout';
 
 function CartPage() {
 
@@ -116,12 +117,15 @@ function CartPage() {
                         <span className='cartTotal fw-bold d-none d-md-block'>${myCart.itemPrice*myCart.cartQuantity}</span>
                         <button onClick={() => removeItemLarge(myCart)} className='removeBtn'>Remove</button>
                         <button className='d-sm-none d-md-block makeOrder text-white ms-1' onClick={()=>makeOrder(myCart)}>Order</button>
+                        {/* <Checkout itemInCart = {myCart.itemName} className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3' /> */}
+
                         <hr/>
                     </div>
                     <div className='optionBtns d-md-none d-block m-auto text-center'>
                           <button onClick={() => removeCartItem(myCart)} className='deleteFood px-2 py-1 mt-2'>Remove</button>
                           <button type='button' data-toggle="modal" data-target="#exampleModal" onClick={()=>makeOrder(myCart)} className='orderFood px-3 py-1'>Order</button>
                     </div>
+                    {/* <Checkout /> */}
                     <hr className='d-sm-none d-md-block' />
                   </div>
                   ))
@@ -134,7 +138,8 @@ function CartPage() {
                 
                 <span className='btn-contain'>
                   <button onClick={removeAll} className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
-                  <button onClick={buyAll} className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button>
+                  <Checkout itemInCart={cart.cartItems}  />
+                  {/* <button onClick={buyAll} className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button> */}
                 </span>
                )}
       </div>
