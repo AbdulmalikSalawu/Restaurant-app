@@ -6,7 +6,7 @@ import useSelector from "react-redux";
 const PaySuccess = () => {
 
   return (
-    <h2 className='mt-5 pt-5'>Your payment has been made successfully.</h2>
+    <h2 className='mt-5 pt-5 text-success text-center'>Your payment has been made successfully.</h2>
   )
 }
 export default PaySuccess

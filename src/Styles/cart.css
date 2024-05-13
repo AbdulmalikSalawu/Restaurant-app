@@ -74,9 +74,9 @@ hr{
     top: -2rem;
     /* cursor: pointer; */
 }
-.buyAll{
-    height: 6rem !important;
-}
+/* .buyAll{
+    height: 6rem ;
+} */
 .removeAll{
     background-color: white;
     border: thin solid #ff4d00 !important;
