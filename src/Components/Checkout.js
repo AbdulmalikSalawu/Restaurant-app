@@ -46,21 +46,34 @@ const Checkout = ({itemInCart}) => {
     //     // dispatch(removeFromCart(newCart))
     // }
 
-    const paywithpaystack = () =>{
-       const payStack = new PaystackPop()
-       payStack.newTransaction({
-          key: "pk_test_d298bcbdff9d9e3decb001f49bf341f904059f15",
-          amount: "200000",
-          email: "salawuabdulmalik90@gmail.com",
-          onSuccess(transaction){
-            let message = `Payment Complete reference ${transaction.reference}`
-            alert(message)
-          },
-          onCancel(){
-            alert("cancelled transaction")
-          }
-       })
+
+    //PAYSTACK CHECKOUT WITH REACT JS
+    // const paywithpaystack = () =>{
+    //    const payStack = new PaystackPop()
+    //    payStack.newTransaction({
+    //       key: "pk_test_d298bcbdff9d9e3decb001f49bf341f904059f15",
+    //       amount: "200000",
+    //       email: "salawuabdulmalik90@gmail.com",
+    //       onSuccess(transaction){
+    //         let message = `Payment Complete reference ${transaction.reference}`
+    //         alert(message)
+    //       },
+    //       onCancel(){
+    //         alert("cancelled transaction")
+    //       }
+    //    })
+    // }
+
+    //PAYSTACK CHECKOUT WITH NODE JS
+    const paywithpaystack = () => {
+        axios.get(`http://localhost:5000/paywithpaystack?email="salawu@gmail.com"&amount="20000"}`)
+        .then((res)=>{
+              let data = res.data
+              window.location.href=data.data.authorization_url
+        })
+        // dispatch(removeFromCart(newCart))
     }
+
 
   return (
     <span>
