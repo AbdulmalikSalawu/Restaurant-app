@@ -1,17 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios"
 // import { removeFromCart } from '../features/cartSlice';
-// import {useSelector,useDispatch} from "react-redux"; 
 // import {loadStripe} from "@stripe/stripe-js"
 // import URL from 
+import PaystackPop from '@paystack/inline-js'
 
 const Checkout = ({itemInCart}) => {
     const apiKey = "pk_test_51PBFE62KbV1mFm0DOvwfDrMqE8iF8TIrAG8Djv4gxnIzbWIGm7Dw9qIbzpWr5qg6wMXmpkdJPHY0xIB2vK0xDmK600gSfcUtsz"
-    // const cart = useSelector((state) => state.cart)
-    // const [newCart, setNewCart] = useState("")
-    // setNewCart(cart.cartItems)
-    // const dispatch = useDispatch()
-    
+
     // METHOD 1
     // const handleCheckout = async () => {
     //         const stripe = await(loadStripe)("pk_test_51PBFE62KbV1mFm0DOvwfDrMqE8iF8TIrAG8Djv4gxnIzbWIGm7Dw9qIbzpWr5qg6wMXmpkdJPHY0xIB2vK0xDmK600gSfcUtsz")
@@ -37,22 +33,39 @@ const Checkout = ({itemInCart}) => {
         
     // }
 
-    //METHOD 2
-    const handleCheckout = () => {
-        axios.post(`https://abdulmalikyinka.onrender.com/createCheckoutSession`, {itemInCart})
-        .then((res)=>{
-            if(res.data.url){
-                window.location.href = res.data.url
-            }
-        }).catch((error)=>{
-            console.log(error.message)
-        })
-        // dispatch(removeFromCart(newCart))
+    //METHOD 2; I USED THIS ONE OOO!
+    // const handleCheckout = () => {
+    //     axios.post(`https://abdulmalikyinka.onrender.com/createCheckoutSession`, {itemInCart})
+    //     .then((res)=>{
+    //         if(res.data.url){
+    //             window.location.href = res.data.url
+    //         }
+    //     }).catch((error)=>{
+    //         console.log(error.message)
+    //     })
+    //     // dispatch(removeFromCart(newCart))
+    // }
+
+    const paywithpaystack = () =>{
+       const payStack = new PaystackPop()
+       payStack.newTransaction({
+          key: "pk_test_d298bcbdff9d9e3decb001f49bf341f904059f15",
+          amount: "200000",
+          email: "salawuabdulmalik90@gmail.com",
+          onSuccess(transaction){
+            let message = `Payment Complete reference ${transaction.reference}`
+            alert(message)
+          },
+          onCancel(){
+            alert("cancelled transaction")
+          }
+       })
     }
 
   return (
     <span>
-      <button className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 fw-bold' onClick={()=> handleCheckout()}>MAKE YOUR PAYMENT</button>
+      {/* <button className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 fw-bold' onClick={()=> handleCheckout()}>MAKE YOUR PAYMENT</button> */}
+      <button className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 fw-bold' onClick={paywithpaystack}>PAYMENT</button>
     </span>
   )
 }

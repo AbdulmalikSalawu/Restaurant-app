@@ -4,6 +4,7 @@
   "main": "index.js",
   "private": true,
   "dependencies": {
+    "@paystack/inline-js": "^2.18.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@stripe/stripe-js": "^3.4.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -48,5 +49,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "babel-jest": "^29.7.0"
   }
 }

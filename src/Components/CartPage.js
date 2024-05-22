@@ -135,10 +135,10 @@ function CartPage() {
               {cart.cartItems.length===0 ? (
                 ""
               ) : (
-                
                 <span className='btn-contain'>
-                  <button onClick={removeAll} className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
-                  <Checkout itemInCart={cart.cartItems}/>
+                  <button data-testid="cartitem" onClick={removeAll} className='removeAll mb-3 text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3 mt-'>Remove All</button>
+                  <Checkout itemInCart={cart.cartItems} />
+                  
                   {/* <button onClick={buyAll} className='buyAll text-white border-0 d-block m-auto text-center col-sm-10 col-md-8 col-lg-3'>Purchase All</button> */}
                 </span>
                )}
