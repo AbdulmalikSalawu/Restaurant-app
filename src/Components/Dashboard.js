@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 // import Nav2 from './Nav2';
 import Main from './Main'
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogIn,removenavbar, removeBackIcon } from '../features/navbarSlice'
+import { setLogIn,removenavbar, removeBackIcon,sendEmail } from '../features/navbarSlice'
 
 function Dashboard() {
 
@@ -29,6 +29,7 @@ function Dashboard() {
       onAuthStateChanged(auth, (user)=> {
         if (user){
           setMyUser(user)
+          dispatch(sendEmail(user?.email))
             }
             else {
               navigate("/login")

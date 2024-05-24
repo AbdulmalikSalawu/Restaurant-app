@@ -5,6 +5,7 @@ const initialState = {
 	navbar: false,
 	isLoggedin: false,
 	backIcon: false,
+	userEmail: "",
 }
 
 export const navbarSlice = createSlice({
@@ -37,6 +38,9 @@ export const navbarSlice = createSlice({
 		},
 		removeBackIcon: (state) => {
 			state.backIcon = false
+		},
+		sendEmail: (state,action) =>{
+			state.userEmail = action.payload
 		}
 	},
 })
@@ -45,6 +49,8 @@ export const {
 	setShow, removeShow,
 	setnavbar, removenavbar,
 	setLogIn,setLogout,neutralUser,
-	showBackIcon, removeBackIcon} = navbarSlice.actions
+	showBackIcon, removeBackIcon,
+	sendEmail
+		} = navbarSlice.actions
 
 export default navbarSlice.reducer
